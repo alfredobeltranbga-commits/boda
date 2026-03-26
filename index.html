@@ -1,75 +1,340 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Boda Alfredo & Johanna</title>
-    <style>
-        body {
-            font-family: 'Arial';
-            text-align: center;
-            background-color: #f2efe9;
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alfredo & Johanna | Nuestra Boda</title>
 
-        .portada {
-            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
-            background-size: cover;
-            color: white;
-            padding: 150px 20px;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        h1 {
-            font-size: 50px;
-            margin: 0;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        h2 {
-            margin-top: 40px;
-        }
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f7f3ee;
+      color: #2f2a26;
+      line-height: 1.6;
+    }
 
-        .seccion {
-            background: white;
-            margin: 40px auto;
-            padding: 30px;
-            width: 70%;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
 
-        a {
-            text-decoration: none;
-            color: white;
-            background: #c5a880;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-    </style>
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 26, 22, 0.38);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      background: rgba(255, 248, 240, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 55px 35px;
+      border-radius: 24px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    .hero-content .intro {
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      opacity: 0.95;
+    }
+
+    .hero-content h1 {
+      font-size: 72px;
+      font-weight: 500;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero-content .frase {
+      font-size: 26px;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .hero-content .fecha-lugar {
+      font-size: 22px;
+      margin-bottom: 35px;
+    }
+
+    .botones {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 16px;
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .btn-principal {
+      background: rgba(255,255,255,0.92);
+      color: #4a3d33;
+      font-weight: bold;
+    }
+
+    .btn-principal:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-secundario {
+      color: white;
+      background: transparent;
+    }
+
+    .btn-secundario:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
+
+    .seccion {
+      max-width: 1000px;
+      margin: 70px auto;
+      padding: 0 22px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.88);
+      border-radius: 24px;
+      padding: 45px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    .card + .card {
+      margin-top: 28px;
+    }
+
+    h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      color: #3e332b;
+    }
+
+    .texto-destacado {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .texto-secundario {
+      font-size: 18px;
+      color: #6b5c51;
+    }
+
+    .itinerario-item {
+      margin: 18px 0;
+      font-size: 19px;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .count-box {
+      background: #f4ede5;
+      border-radius: 18px;
+      padding: 20px 10px;
+    }
+
+    .count-box span {
+      display: block;
+      font-size: 34px;
+      font-weight: bold;
+      color: #3e332b;
+    }
+
+    .count-box small {
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #7b6b5d;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 18px;
+      background: #b89b79;
+      color: white;
+      text-decoration: none;
+      padding: 15px 28px;
+      border-radius: 999px;
+      font-size: 17px;
+      transition: 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background: #a88b69;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px 60px;
+      color: #7b6b5d;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        padding: 35px 22px;
+      }
+
+      .hero-content h1 {
+        font-size: 46px;
+      }
+
+      .hero-content .frase {
+        font-size: 20px;
+      }
+
+      .hero-content .fecha-lugar {
+        font-size: 18px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="portada">
-    <h1>Alfredo & Johanna</h1>
-    <p>El mar será testigo de nuestro sí</p>
-    <p>Noviembre 2026 - Santa Marta</p>
-</div>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="intro">Nos casamos</div>
+      <h1>Alfredo & Johanna</h1>
+      <p class="frase">El mar será testigo de nuestro sí</p>
+      <p class="fecha-lugar">Noviembre 2026 · Santa Marta, Colombia</p>
 
-<div class="seccion">
-    <h2>Ceremonia</h2>
-    <p>Casa Gloria, Santa Marta</p>
-    <p>4:00 PM</p>
-</div>
+      <div class="botones">
+        <a href="#detalle" class="btn btn-principal">Ver invitación</a>
+        <a href="#confirmacion" class="btn btn-secundario">Confirmar asistencia</a>
+      </div>
+    </div>
+  </section>
 
-<div class="seccion">
-    <h2>Itinerario</h2>
-    <p>Viernes: Llegada invitados</p>
-    <p>Sábado: Matrimonio</p>
-    <p>Domingo: Día de playa</p>
-</div>
+  <section class="seccion" id="detalle">
+    <div class="card">
+      <h2>Nuestra celebración</h2>
+      <p class="texto-destacado">Casa Gloria · Santa Marta</p>
+      <p class="texto-secundario">Ceremonia al atardecer · 4:00 PM</p>
+    </div>
 
-<div class="seccion">
-    <h2>Confirmar Asistencia</h2>
-    <a href="https://wa.me/573001234567">Confirmar por WhatsApp</a>
-</div>
+    <div class="card">
+      <h2>Cuenta regresiva</h2>
+      <p class="texto-secundario">Cada día nos acerca más a este momento tan especial.</p>
+
+      <div class="countdown">
+        <div class="count-box">
+          <span id="dias">00</span>
+          <small>Días</small>
+        </div>
+        <div class="count-box">
+          <span id="horas">00</span>
+          <small>Horas</small>
+        </div>
+        <div class="count-box">
+          <span id="minutos">00</span>
+          <small>Minutos</small>
+        </div>
+        <div class="count-box">
+          <span id="segundos">00</span>
+          <small>Segundos</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Itinerario</h2>
+      <p class="itinerario-item"><strong>Viernes:</strong> llegada de invitados</p>
+      <p class="itinerario-item"><strong>Sábado:</strong> ceremonia y celebración</p>
+      <p class="itinerario-item"><strong>Domingo:</strong> brunch y tiempo junto al mar</p>
+      <p class="itinerario-item"><strong>Lunes festivo:</strong> regreso</p>
+    </div>
+
+    <div class="card" id="confirmacion">
+      <h2>Confirmación de asistencia</h2>
+      <p class="texto-secundario">Nos encantará compartir este momento contigo.</p>
+      <a class="whatsapp-btn" href="https://wa.me/573001234567" target="_blank">
+        Confirmar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <div class="footer">
+    Con amor, Alfredo & Johanna
+  </div>
+
+  <script>
+    const fechaBoda = new Date("2026-11-14T16:00:00").getTime();
+
+    function actualizarContador() {
+      const ahora = new Date().getTime();
+      const diferencia = fechaBoda - ahora;
+
+      if (diferencia <= 0) {
+        document.getElementById("dias").innerText = "00";
+        document.getElementById("horas").innerText = "00";
+        document.getElementById("minutos").innerText = "00";
+        document.getElementById("segundos").innerText = "00";
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      document.getElementById("dias").innerText = dias;
+      document.getElementById("horas").innerText = horas;
+      document.getElementById("minutos").innerText = minutos;
+      document.getElementById("segundos").innerText = segundos;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
 
 </body>
 </html>
