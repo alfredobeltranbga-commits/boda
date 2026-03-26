@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alfredo & Johanna | Nuestra Boda</title>
+  <title>Alfred & Joha | Nuestra Boda</title>
 
   <style>
     * {
@@ -17,121 +17,123 @@
     }
 
     body {
-      font-family: 'Georgia', serif;
-      background-color: #f7f3ee;
-      color: #2f2a26;
+      font-family: "Georgia", serif;
+      background: #f7f2eb;
+      color: #3d322c;
       line-height: 1.6;
     }
 
     .hero {
       position: relative;
       min-height: 100vh;
-      background-image: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80');
+      background:
+        linear-gradient(rgba(34, 28, 24, 0.38), rgba(34, 28, 24, 0.38)),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80');
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 30px;
+      padding: 30px 20px;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(30, 26, 22, 0.38);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 850px;
-      background: rgba(255, 248, 240, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+    .hero-box {
+      width: 100%;
+      max-width: 900px;
+      padding: 60px 30px;
+      border-radius: 28px;
+      background: rgba(255, 248, 241, 0.14);
+      border: 1px solid rgba(255,255,255,0.24);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
-      padding: 55px 35px;
-      border-radius: 24px;
-      color: white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+      color: #fff;
     }
 
-    .hero-content .intro {
-      font-size: 18px;
-      letter-spacing: 3px;
+    .overline {
+      font-size: 14px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 18px;
       opacity: 0.95;
     }
 
-    .hero-content h1 {
-      font-size: 72px;
+    .hero h1 {
+      font-size: 76px;
       font-weight: 500;
       line-height: 1.05;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .hero-content .frase {
-      font-size: 26px;
-      margin-bottom: 18px;
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: rgba(255,255,255,0.7);
+      margin: 0 auto 24px;
+    }
+
+    .hero .phrase {
+      font-size: 28px;
       font-style: italic;
+      margin-bottom: 16px;
     }
 
-    .hero-content .fecha-lugar {
+    .hero .date-place {
       font-size: 22px;
-      margin-bottom: 35px;
+      letter-spacing: 0.5px;
+      margin-bottom: 36px;
     }
 
-    .botones {
+    .buttons {
       display: flex;
-      gap: 16px;
       justify-content: center;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-block;
       text-decoration: none;
-      padding: 14px 26px;
+      padding: 14px 28px;
       border-radius: 999px;
-      font-size: 16px;
-      transition: 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.7);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.6);
     }
 
-    .btn-principal {
+    .btn-primary {
       background: rgba(255,255,255,0.92);
-      color: #4a3d33;
+      color: #5b4738;
       font-weight: bold;
     }
 
-    .btn-principal:hover {
-      background: white;
+    .btn-primary:hover {
       transform: translateY(-2px);
+      background: #ffffff;
     }
 
-    .btn-secundario {
-      color: white;
+    .btn-secondary {
+      color: #fff;
       background: transparent;
     }
 
-    .btn-secundario:hover {
-      background: rgba(255,255,255,0.12);
+    .btn-secondary:hover {
       transform: translateY(-2px);
+      background: rgba(255,255,255,0.12);
     }
 
-    .seccion {
-      max-width: 1000px;
+    .section {
+      max-width: 1050px;
       margin: 70px auto;
-      padding: 0 22px;
+      padding: 0 20px;
     }
 
     .card {
       background: rgba(255,255,255,0.88);
-      border-radius: 24px;
-      padding: 45px 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      border-radius: 26px;
+      padding: 48px 30px;
+      box-shadow: 0 12px 35px rgba(83, 63, 47, 0.08);
       text-align: center;
     }
 
@@ -141,90 +143,91 @@
 
     h2 {
       font-size: 38px;
+      font-weight: 500;
       margin-bottom: 20px;
-      color: #3e332b;
+      color: #4a3b31;
     }
 
-    .texto-destacado {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .texto-secundario {
+    .subtle {
+      color: #7c6a5d;
       font-size: 18px;
-      color: #6b5c51;
     }
 
-    .itinerario-item {
-      margin: 18px 0;
-      font-size: 19px;
+    .highlight {
+      font-size: 24px;
+      margin-bottom: 8px;
     }
 
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-top: 25px;
+      margin-top: 28px;
     }
 
-    .count-box {
-      background: #f4ede5;
-      border-radius: 18px;
-      padding: 20px 10px;
+    .count-item {
+      background: #f4ece3;
+      border-radius: 20px;
+      padding: 22px 10px;
     }
 
-    .count-box span {
+    .count-item span {
       display: block;
-      font-size: 34px;
+      font-size: 36px;
       font-weight: bold;
-      color: #3e332b;
+      color: #4b3b31;
     }
 
-    .count-box small {
-      font-size: 14px;
-      letter-spacing: 1px;
+    .count-item small {
+      font-size: 13px;
       text-transform: uppercase;
-      color: #7b6b5d;
+      letter-spacing: 1.3px;
+      color: #8a7564;
     }
 
-    .whatsapp-btn {
+    .schedule-item {
+      margin: 16px 0;
+      font-size: 19px;
+    }
+
+    .rsvp-btn {
       display: inline-block;
-      margin-top: 18px;
-      background: #b89b79;
-      color: white;
+      margin-top: 20px;
+      background: #b69472;
+      color: #fff;
       text-decoration: none;
-      padding: 15px 28px;
+      padding: 15px 30px;
       border-radius: 999px;
-      font-size: 17px;
-      transition: 0.3s ease;
+      font-size: 16px;
+      transition: all 0.3s ease;
     }
 
-    .whatsapp-btn:hover {
-      background: #a88b69;
+    .rsvp-btn:hover {
+      background: #a68463;
       transform: translateY(-2px);
     }
 
     .footer {
       text-align: center;
-      padding: 40px 20px 60px;
-      color: #7b6b5d;
+      padding: 20px 20px 60px;
+      color: #8b7766;
       font-size: 16px;
     }
 
     @media (max-width: 768px) {
-      .hero-content {
-        padding: 35px 22px;
+      .hero-box {
+        padding: 42px 22px;
       }
 
-      .hero-content h1 {
-        font-size: 46px;
+      .hero h1 {
+        font-size: 48px;
       }
 
-      .hero-content .frase {
-        font-size: 20px;
+      .hero .phrase {
+        font-size: 21px;
       }
 
-      .hero-content .fecha-lugar {
+      .hero .date-place {
         font-size: 18px;
       }
 
@@ -241,44 +244,45 @@
 <body>
 
   <section class="hero">
-    <div class="hero-content">
-      <div class="intro">Nos casamos</div>
-      <h1>Alfredo & Johanna</h1>
-      <p class="frase">El mar será testigo de nuestro sí</p>
-      <p class="fecha-lugar">Noviembre 2026 · Santa Marta, Colombia</p>
+    <div class="hero-box">
+      <div class="overline">Nos casamos</div>
+      <h1>Alfred & Joha</h1>
+      <div class="divider"></div>
+      <p class="phrase">El mar será testigo de nuestro sí</p>
+      <p class="date-place">Noviembre 2026 · Santa Marta, Colombia</p>
 
-      <div class="botones">
-        <a href="#detalle" class="btn btn-principal">Ver invitación</a>
-        <a href="#confirmacion" class="btn btn-secundario">Confirmar asistencia</a>
+      <div class="buttons">
+        <a href="#detalle" class="btn btn-primary">Ver invitación</a>
+        <a href="#rsvp" class="btn btn-secondary">Confirmar asistencia</a>
       </div>
     </div>
   </section>
 
-  <section class="seccion" id="detalle">
+  <section class="section" id="detalle">
     <div class="card">
       <h2>Nuestra celebración</h2>
-      <p class="texto-destacado">Casa Gloria · Santa Marta</p>
-      <p class="texto-secundario">Ceremonia al atardecer · 4:00 PM</p>
+      <p class="highlight">Casa Gloria · Santa Marta</p>
+      <p class="subtle">Ceremonia al atardecer · 4:00 PM</p>
     </div>
 
     <div class="card">
       <h2>Cuenta regresiva</h2>
-      <p class="texto-secundario">Cada día nos acerca más a este momento tan especial.</p>
+      <p class="subtle">Cada día nos acerca más a este momento tan especial.</p>
 
       <div class="countdown">
-        <div class="count-box">
+        <div class="count-item">
           <span id="dias">00</span>
           <small>Días</small>
         </div>
-        <div class="count-box">
+        <div class="count-item">
           <span id="horas">00</span>
           <small>Horas</small>
         </div>
-        <div class="count-box">
+        <div class="count-item">
           <span id="minutos">00</span>
           <small>Minutos</small>
         </div>
-        <div class="count-box">
+        <div class="count-item">
           <span id="segundos">00</span>
           <small>Segundos</small>
         </div>
@@ -287,23 +291,23 @@
 
     <div class="card">
       <h2>Itinerario</h2>
-      <p class="itinerario-item"><strong>Viernes:</strong> llegada de invitados</p>
-      <p class="itinerario-item"><strong>Sábado:</strong> ceremonia y celebración</p>
-      <p class="itinerario-item"><strong>Domingo:</strong> brunch y tiempo junto al mar</p>
-      <p class="itinerario-item"><strong>Lunes festivo:</strong> regreso</p>
+      <p class="schedule-item"><strong>Viernes:</strong> llegada de invitados</p>
+      <p class="schedule-item"><strong>Sábado:</strong> ceremonia y celebración</p>
+      <p class="schedule-item"><strong>Domingo:</strong> brunch y tiempo junto al mar</p>
+      <p class="schedule-item"><strong>Lunes festivo:</strong> regreso</p>
     </div>
 
-    <div class="card" id="confirmacion">
+    <div class="card" id="rsvp">
       <h2>Confirmación de asistencia</h2>
-      <p class="texto-secundario">Nos encantará compartir este momento contigo.</p>
-      <a class="whatsapp-btn" href="https://wa.me/573001234567" target="_blank">
+      <p class="subtle">Nos encantará compartir este momento contigo.</p>
+      <a class="rsvp-btn" href="https://wa.me/573001234567" target="_blank">
         Confirmar por WhatsApp
       </a>
     </div>
   </section>
 
   <div class="footer">
-    Con amor, Alfredo & Johanna
+    Con amor, Alfred & Joha
   </div>
 
   <script>
