@@ -668,12 +668,21 @@
     }
 
  /* LLUVIA DE SOBRES */   
+.bloque-sobres h2::after{
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #c6a98b;
+  margin: 12px auto 25px;
+  border-radius: 2px;
+}
+
 .texto-sobres{
-  max-width: 650px;
-  margin: 0 auto 30px;
   line-height: 1.8;
   color: #6f5e52;
   font-size: 17px;
+  margin-bottom: 30px;
 }
 
 .qr-boda{
@@ -1069,23 +1078,25 @@
 
   <!-- LLUVIA DE SOBRES -->
   <section class="seccion fade-up" id="sobres">
-  <h2>Lluvia de sobres</h2>
+  <div class="bloque-sobres">
+    <h2>Lluvia de sobres</h2>
 
-  <p class="texto-sobres">
-    Tu presencia en nuestra boda es el mejor regalo que podemos recibir.
-    <br><br>
-    Pero si deseas tener un detalle con nosotros para esta nueva etapa que comenzamos,
-    hemos preparado una <strong>lluvia de sobres virtual</strong> para que puedas hacerlo
-    de forma fácil y práctica a través del siguiente código QR.
-    <br><br>
-    Gracias por acompañarnos en este momento tan importante para nosotros.
-  </p>
+    <p class="texto-sobres">
+      Tu presencia en nuestra boda es el mejor regalo que podemos recibir.
+      <br><br>
+      Pero si deseas tener un detalle con nosotros para esta nueva etapa que comenzamos,
+      hemos preparado una <strong>lluvia de sobres virtual</strong> para que puedas hacerlo
+      de forma fácil y práctica a través del siguiente código QR.
+      <br><br>
+      Gracias por acompañarnos en este momento tan importante para nosotros.
+    </p>
 
-  <img src="qr-boda.png" class="qr-boda">
+    <img src="qr-boda.png" class="qr-boda">
 
-  <p class="texto-qr">
-    Escanea el código con la cámara de tu celular
-  </p>
+    <p class="texto-qr">
+      Escanea el código con la cámara de tu celular
+    </p>
+  </div>
 </section>
 
   <!-- MOMENTOS -->
