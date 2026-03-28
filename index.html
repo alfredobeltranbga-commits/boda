@@ -692,36 +692,37 @@
       font-size:16px;
     }
 
+    /* BOTON AUDIO*/
 .audio-btn{
   position: fixed;
   bottom: 22px;
   right: 22px;
-  width: 62px;
-  height: 62px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.14);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.30);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
   color: white;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
   z-index: 10000;
   transition: all .3s ease;
 }
 
 .audio-btn:hover{
   transform: scale(1.08);
-  background: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.22);
 }
 
 .audio-btn.playing{
-  background: rgba(182,148,114,0.78);
-  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.30);
 }
 
 .hidden{
