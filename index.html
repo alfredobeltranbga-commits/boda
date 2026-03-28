@@ -668,33 +668,32 @@
     }
 
  /* LLUVIA DE SOBRES */   
-.bloque-sobres h2::after{
-  content: "";
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: #c6a98b;
-  margin: 12px auto 25px;
-  border-radius: 2px;
-}
-
-.texto-sobres{
-  line-height: 1.8;
+.gift-text{
+  max-width: 760px;
+  margin: 0 auto 28px;
   color: #6f5e52;
-  font-size: 17px;
-  margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 1.8;
 }
 
-.qr-boda{
-  width: 230px;
-  border-radius: 18px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+.gift-qr-wrap{
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
 }
 
-.texto-qr{
-  margin-top: 12px;
-  color: #8a7768;
+.gift-qr{
+  width: 240px;
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  background: white;
+  padding: 10px;
+}
+
+.gift-note{
+  margin-top: 14px;
+  color: #8a7764;
   font-size: 14px;
 }
     /* GIFT / RSVP / FINAL */
@@ -1077,11 +1076,12 @@
   </section>
 
   <!-- LLUVIA DE SOBRES -->
-  <section class="seccion fade-up" id="sobres">
-  <div class="bloque-sobres">
+ <section class="section fade-up" id="regalos">
+  <div class="card beige">
+    <span class="eyebrow">Regalo</span>
     <h2>Lluvia de sobres</h2>
 
-    <p class="texto-sobres">
+    <p class="gift-text">
       Tu presencia en nuestra boda es el mejor regalo que podemos recibir.
       <br><br>
       Pero si deseas tener un detalle con nosotros para esta nueva etapa que comenzamos,
@@ -1091,9 +1091,11 @@
       Gracias por acompañarnos en este momento tan importante para nosotros.
     </p>
 
-    <img src="qr-boda.png" class="qr-boda">
+    <div class="gift-qr-wrap">
+      <img src="qr-boda.png" alt="QR lluvia de sobres" class="gift-qr">
+    </div>
 
-    <p class="texto-qr">
+    <p class="gift-note">
       Escanea el código con la cámara de tu celular
     </p>
   </div>
