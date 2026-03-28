@@ -23,7 +23,16 @@
       line-height: 1.6;
     }
 
-    /* INTRO 15 AÑOS */
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* INTRO */
     #intro-overlay {
       position: fixed;
       inset: 0;
@@ -56,9 +65,7 @@
       font-weight: 600;
       line-height: 1;
       letter-spacing: 2px;
-      opacity: 1;
-      transform: scale(1);
-      transition: transform 0.35s ease, opacity 0.35s ease;
+      transition: transform 0.35s ease;
       text-shadow: 0 0 25px rgba(255,255,255,0.12);
     }
 
@@ -70,10 +77,10 @@
       margin-top: 28px;
       font-size: 24px;
       color: rgba(255,255,255,0.92);
-      letter-spacing: 0.5px;
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 0.8s ease, transform 0.8s ease;
+      padding: 0 20px;
     }
 
     #intro-message.show {
@@ -117,39 +124,16 @@
     #celebration-burst.show .spark7 { animation: burst7 1s ease-out forwards; }
     #celebration-burst.show .spark8 { animation: burst8 1s ease-out forwards; }
 
-    @keyframes burst1 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(0,-120px) scale(0.6); }
-    }
-    @keyframes burst2 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(85px,-85px) scale(0.6); }
-    }
-    @keyframes burst3 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(120px,0) scale(0.6); }
-    }
-    @keyframes burst4 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(85px,85px) scale(0.6); }
-    }
-    @keyframes burst5 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(0,120px) scale(0.6); }
-    }
-    @keyframes burst6 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(-85px,85px) scale(0.6); }
-    }
-    @keyframes burst7 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(-120px,0) scale(0.6); }
-    }
-    @keyframes burst8 {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(-85px,-85px) scale(0.6); }
-    }
+    @keyframes burst1 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(0,-120px) scale(.6);} }
+    @keyframes burst2 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(85px,-85px) scale(.6);} }
+    @keyframes burst3 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(120px,0) scale(.6);} }
+    @keyframes burst4 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(85px,85px) scale(.6);} }
+    @keyframes burst5 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(0,120px) scale(.6);} }
+    @keyframes burst6 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(-85px,85px) scale(.6);} }
+    @keyframes burst7 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(-120px,0) scale(.6);} }
+    @keyframes burst8 { 0% { opacity:1; transform:translate(0,0) scale(1);} 100% { opacity:0; transform:translate(-85px,-85px) scale(.6);} }
 
+    /* HERO */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -250,95 +234,41 @@
       background: rgba(255,255,255,0.12);
     }
 
+    /* GENERAL SECTIONS */
     .section {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: 70px auto;
       padding: 0 20px;
     }
 
     .card {
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.9);
       border-radius: 26px;
       padding: 48px 30px;
       box-shadow: 0 12px 35px rgba(83, 63, 47, 0.08);
       text-align: center;
     }
 
-    .card + .card {
-      margin-top: 28px;
+    .card.beige {
+      background: #f3ebe2;
     }
 
     h2 {
       font-size: 38px;
       font-weight: 500;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: #4a3b31;
     }
 
     .subtle {
       color: #7c6a5d;
       font-size: 18px;
+      max-width: 760px;
+      margin: 0 auto;
     }
 
-    .highlight {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .count-item {
-      background: #f4ece3;
-      border-radius: 20px;
-      padding: 22px 10px;
-    }
-
-    .count-item span {
-      display: block;
-      font-size: 36px;
-      font-weight: bold;
-      color: #4b3b31;
-    }
-
-    .count-item small {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1.3px;
-      color: #8a7564;
-    }
-
-    .schedule-item {
-      margin: 16px 0;
-      font-size: 19px;
-    }
-
-    .rsvp-btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: #b69472;
-      color: #fff;
-      text-decoration: none;
-      padding: 15px 30px;
-      border-radius: 999px;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .rsvp-btn:hover {
-      background: #a68463;
-      transform: translateY(-2px);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 20px 20px 60px;
-      color: #8b7766;
-      font-size: 16px;
+    .section-intro {
+      margin-bottom: 28px;
     }
 
     /* CARRUSEL */
@@ -374,25 +304,20 @@
       height: 46px;
       border: none;
       border-radius: 50%;
-      background: rgba(255,255,255,0.80);
+      background: rgba(255,255,255,0.82);
       color: #4a3b31;
       font-size: 28px;
       cursor: pointer;
       z-index: 5;
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
     }
 
     .carousel-btn:hover {
       background: rgba(255,255,255,0.98);
     }
 
-    .prev {
-      left: 14px;
-    }
-
-    .next {
-      right: 14px;
-    }
+    .prev { left: 14px; }
+    .next { right: 14px; }
 
     .carousel-dots {
       display: flex;
@@ -407,12 +332,206 @@
       border-radius: 50%;
       background: #d8c9ba;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
     }
 
     .dot.active {
       background: #a68463;
       transform: scale(1.2);
+    }
+
+    /* CELEBRATION */
+    .celebration-text {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #7c6a5d;
+      font-size: 18px;
+    }
+
+    .celebration-details {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .detail-box {
+      background: #f8f2ec;
+      padding: 22px 16px;
+      border-radius: 18px;
+    }
+
+    .detail-box h3 {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8a7564;
+      margin-bottom: 8px;
+    }
+
+    .detail-box p {
+      font-size: 18px;
+      color: #4b3b31;
+    }
+
+    /* COUNTDOWN */
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .count-item {
+      background: #f4ece3;
+      border-radius: 20px;
+      padding: 22px 10px;
+    }
+
+    .count-item span {
+      display: block;
+      font-size: 36px;
+      font-weight: bold;
+      color: #4b3b31;
+    }
+
+    .count-item small {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: #8a7564;
+    }
+
+    /* ITINERARY */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .timeline-card {
+      background: #f8f2ec;
+      border-radius: 20px;
+      padding: 24px 20px;
+    }
+
+    .timeline-card h3 {
+      font-size: 22px;
+      color: #4a3b31;
+      margin-bottom: 10px;
+    }
+
+    .timeline-card p {
+      color: #6f5e52;
+      font-size: 17px;
+    }
+
+    /* TWO COLUMN GRID */
+    .two-column-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    .info-box {
+      background: #f8f2ec;
+      border-radius: 20px;
+      padding: 26px 24px;
+    }
+
+    .info-box h3 {
+      font-size: 22px;
+      color: #4a3b31;
+      margin-bottom: 12px;
+    }
+
+    .info-box p, .info-box li {
+      color: #6f5e52;
+      font-size: 17px;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-box li + li {
+      margin-top: 8px;
+    }
+
+    .location-btn,
+    .rsvp-btn {
+      display: inline-block;
+      margin-top: 22px;
+      background: #b69472;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 999px;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    .location-btn:hover,
+    .rsvp-btn:hover {
+      background: #a68463;
+      transform: translateY(-2px);
+    }
+
+    /* DRESS CODE */
+    .dress-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .dress-card {
+      background: #f8f2ec;
+      border-radius: 20px;
+      padding: 26px 24px;
+    }
+
+    .dress-card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: #4a3b31;
+    }
+
+    .dress-card p {
+      color: #6f5e52;
+      font-size: 17px;
+    }
+
+    /* GIFT / FINAL */
+    .gift-text,
+    .final-text {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #6f5e52;
+      font-size: 18px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 20px 60px;
+      color: #8b7766;
+      font-size: 16px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .celebration-details,
+      .timeline,
+      .countdown,
+      .two-column-grid,
+      .dress-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
@@ -422,7 +541,6 @@
 
       #intro-message {
         font-size: 18px;
-        padding: 0 20px;
       }
 
       .hero-box {
@@ -445,10 +563,6 @@
         font-size: 30px;
       }
 
-      .countdown {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
       .carousel-slide {
         height: 320px;
       }
@@ -457,6 +571,24 @@
         width: 40px;
         height: 40px;
         font-size: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .celebration-details,
+      .timeline,
+      .countdown,
+      .two-column-grid,
+      .dress-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        margin: 50px auto;
+      }
+
+      .card {
+        padding: 34px 20px;
       }
     }
   </style>
@@ -479,10 +611,11 @@
         <span class="spark spark8"></span>
       </div>
 
-      <p id="intro-message">15 años de historia nos trajeron hasta aquí</p>
+      <p id="intro-message">15 años caminando juntos, y el mejor capítulo apenas comienza.</p>
     </div>
   </div>
 
+  <!-- PORTADA -->
   <section class="hero">
     <div class="hero-box">
       <div class="overline">Nos casamos</div>
@@ -492,16 +625,18 @@
       <p class="date-place">Noviembre 2026 · Santa Marta, Colombia</p>
 
       <div class="buttons">
-        <a href="#detalle" class="btn btn-primary">Ver invitación</a>
+        <a href="#momentos" class="btn btn-primary">Ver invitación</a>
         <a href="#rsvp" class="btn btn-secondary">Confirmar asistencia</a>
+        <a href="#como-llegar" class="btn btn-secondary">Cómo llegar</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- MOMENTOS -->
+  <section class="section" id="momentos">
     <div class="card">
-      <h2>Nuestros momentos</h2>
-      <p class="subtle">Un pequeño recorrido de nuestra historia.</p>
+      <h2>Nuestra historia en momentos</h2>
+      <p class="subtle section-intro">Algunos recuerdos, viajes, risas y momentos que nos trajeron hasta este día.</p>
 
       <div class="carousel-wrapper">
         <button class="carousel-btn prev" onclick="moverSlide(-1)">&#10094;</button>
@@ -527,16 +662,44 @@
     </div>
   </section>
 
-  <section class="section" id="detalle">
-    <div class="card">
+  <!-- NUESTRA CELEBRACIÓN -->
+  <section class="section" id="celebracion">
+    <div class="card beige">
       <h2>Nuestra celebración</h2>
-      <p class="highlight">Casa Gloria · Santa Marta</p>
-      <p class="subtle">Ceremonia al atardecer · 4:00 PM</p>
-    </div>
+      <p class="celebration-text">
+        Después de 15 años de historia, queremos celebrar el inicio de una nueva etapa.
+        Nos encantaría que nos acompañaras en uno de los días más importantes de nuestras vidas.
+      </p>
 
+      <div class="celebration-details">
+        <div class="detail-box">
+          <h3>Fecha</h3>
+          <p>Sábado, 14 de noviembre de 2026</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>Hora</h3>
+          <p>4:00 PM</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>Lugar</h3>
+          <p>Casa Gloria</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>Ciudad</h3>
+          <p>Santa Marta, Colombia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUENTA REGRESIVA -->
+  <section class="section" id="contador">
     <div class="card">
       <h2>Cuenta regresiva</h2>
-      <p class="subtle">Cada día nos acerca más a este momento tan especial.</p>
+      <p class="subtle section-intro">Cada día nos acerca más a este momento tan especial. Estamos contando los días para celebrar contigo.</p>
 
       <div class="countdown">
         <div class="count-item">
@@ -557,29 +720,154 @@
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="card">
+  <!-- ITINERARIO -->
+  <section class="section" id="itinerario">
+    <div class="card beige">
       <h2>Itinerario</h2>
-      <p class="schedule-item"><strong>Viernes:</strong> llegada de invitados</p>
-      <p class="schedule-item"><strong>Sábado:</strong> ceremonia y celebración</p>
-      <p class="schedule-item"><strong>Domingo:</strong> brunch y tiempo junto al mar</p>
-      <p class="schedule-item"><strong>Lunes festivo:</strong> regreso</p>
-    </div>
+      <p class="subtle section-intro">Un fin de semana para celebrar, compartir y disfrutar juntos en Santa Marta.</p>
 
-    <div class="card" id="rsvp">
+      <div class="timeline">
+        <div class="timeline-card">
+          <h3>Viernes</h3>
+          <p>Llegada de invitados y tiempo libre para disfrutar Santa Marta.</p>
+        </div>
+
+        <div class="timeline-card">
+          <h3>Sábado</h3>
+          <p>Ceremonia y celebración.</p>
+        </div>
+
+        <div class="timeline-card">
+          <h3>Domingo</h3>
+          <p>Tiempo para compartir, playa y descanso.</p>
+        </div>
+
+        <div class="timeline-card">
+          <h3>Lunes festivo</h3>
+          <p>Regreso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO LLEGAR -->
+  <section class="section" id="como-llegar">
+    <div class="card">
+      <h2>Cómo llegar</h2>
+      <p class="subtle section-intro">
+        La celebración será en Santa Marta, Colombia. El aeropuerto más cercano es el Aeropuerto Internacional Simón Bolívar.
+        Desde el aeropuerto hasta la zona del evento, el trayecto es de aproximadamente 15 a 20 minutos en taxi.
+      </p>
+
+      <a class="location-btn" href="https://maps.google.com" target="_blank">Ver ubicación</a>
+    </div>
+  </section>
+
+  <!-- DÓNDE ALOJARSE -->
+  <section class="section" id="alojarse">
+    <div class="card beige">
+      <h2>Dónde alojarse</h2>
+      <p class="subtle section-intro">
+        Recomendamos alojarse en la zona de Bello Horizonte o Pozos Colorados, cerca al lugar del evento, para mayor comodidad.
+      </p>
+
+      <div class="two-column-grid">
+        <div class="info-box">
+          <h3>Opciones cercanas</h3>
+          <ul>
+            <li>Delventto</li>
+            <li>Samaria</li>
+            <li>Zuana Beach Resort</li>
+            <li>Irotama Resort</li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <h3>Otras zonas</h3>
+          <ul>
+            <li>El Rodadero</li>
+            <li>Santa Marta Centro</li>
+            <li>Bello Horizonte</li>
+            <li>Pozos Colorados</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section class="section" id="dress-code">
+    <div class="card">
+      <h2>Dress Code</h2>
+      <p class="subtle section-intro">
+        Queremos que te sientas cómodo y elegante para celebrar con nosotros frente al mar.
+        Recomendamos ropa fresca, colores claros y calzado cómodo.
+      </p>
+
+      <div class="dress-grid">
+        <div class="dress-card">
+          <h3>Hombres</h3>
+          <p>Bermuda beige y camisa blanca o guayabera.</p>
+        </div>
+
+        <div class="dress-card">
+          <h3>Mujeres</h3>
+          <p>Vestido blanco o conjunto en tonos claros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LLUVIA DE SOBRES -->
+  <section class="section" id="regalos">
+    <div class="card beige">
+      <h2>Lluvia de sobres</h2>
+      <p class="gift-text">
+        Lo más importante para nosotros es tu presencia en este día tan especial.
+        Si deseas tener un detalle con nosotros, agradecemos tu cariño a través de lluvia de sobres.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONFIRMACIÓN -->
+  <section class="section" id="rsvp">
+    <div class="card">
       <h2>Confirmación de asistencia</h2>
-      <p class="subtle">Nos encantará compartir este momento contigo.</p>
-      <a class="rsvp-btn" href="https://wa.me/573001234567" target="_blank">
-        Confirmar por WhatsApp
+      <p class="subtle section-intro">
+        Por favor confirma tu asistencia antes del 15 de octubre de 2026.
+        Para nosotros es muy importante contar con tu confirmación.
+      </p>
+
+      <a
+        class="rsvp-btn"
+        href="https://wa.me/573001234567?text=Hola%20Alfred%20y%20Joha,%20quiero%20confirmar%20mi%20asistencia%20a%20la%20boda."
+        target="_blank"
+      >
+        Confirmar asistencia por WhatsApp
       </a>
     </div>
   </section>
 
+  <!-- MENSAJE FINAL -->
+  <section class="section" id="final">
+    <div class="card beige">
+      <h2>Con amor</h2>
+      <p class="final-text">
+        Gracias por hacer parte de nuestra historia.<br>
+        Nos hará muy felices compartir este momento contigo.<br><br>
+        Alfred & Joha
+      </p>
+    </div>
+  </section>
+
   <div class="footer">
-    Con amor, Alfred & Joha
+    Alfred & Joha · Santa Marta 2026
   </div>
 
   <script>
+    /* CONTADOR BODA */
     const fechaBoda = new Date("2026-11-14T16:00:00").getTime();
 
     function actualizarContador() {
@@ -608,6 +896,7 @@
     setInterval(actualizarContador, 1000);
     actualizarContador();
 
+    /* CARRUSEL */
     let slideActual = 0;
     const totalSlides = 4;
 
@@ -645,6 +934,7 @@
       moverSlide(1);
     }, 5000);
 
+    /* INTRO 15 AÑOS */
     function iniciarIntro15() {
       const overlay = document.getElementById("intro-overlay");
       const countNumber = document.getElementById("count-number");
