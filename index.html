@@ -696,31 +696,48 @@
   position: fixed;
   bottom: 22px;
   right: 22px;
-  width: 56px;
-  height: 56px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
-  background: rgba(182,148,114,0.75);
-  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 24px;
   color: white;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  z-index: 999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  z-index: 10000;
   transition: all .3s ease;
 }
 
 .audio-btn:hover{
   transform: scale(1.08);
-  background: rgba(182,148,114,0.95);
+  background: rgba(255,255,255,0.28);
 }
 
 .audio-btn.playing{
-  background: rgba(140,110,80,0.85);
+  background: rgba(182,148,114,0.78);
+  border: 1px solid rgba(255,255,255,0.28);
 }
-    
+
+.hidden{
+  display: none;
+}
+
+.intro-audio-btn{
+  position: absolute;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%);
+}
+
+.intro-audio-btn:hover{
+  transform: translateX(-50%) scale(1.08);
+}
     /* RESPONSIVE */
     @media (max-width: 1100px){
       .stay-grid{grid-template-columns:repeat(2,1fr)}
@@ -1129,79 +1146,69 @@
 
   /* INTRO 15 AÑOS */
   function iniciarIntro15() {
-    const overlay = document.getElementById("intro-overlay");
-    const countNumber = document.getElementById("count-number");
-    const burst = document.getElementById("celebration-burst");
-    const message = document.getElementById("intro-message");
+  const overlay = document.getElementById("intro-overlay");
+  const countNumber = document.getElementById("count-number");
+  const burst = document.getElementById("celebration-burst");
+  const message = document.getElementById("intro-message");
+  const musicButton = document.getElementById("musicButton");
+  const audioIcon = document.getElementById("audioIcon");
+  const weddingSong = document.getElementById("weddingSong");
 
-    let numero = 1;
+  let numero = 1;
+  let introFinished = false;
+  let isPlaying = false;
 
-    countNumber.textContent = "1";
+  countNumber.textContent = "1";
+  countNumber.classList.add("animate");
+
+  const intervalo = setInterval(() => {
+    countNumber.classList.remove("animate");
+    void countNumber.offsetWidth;
+
+    countNumber.textContent = numero;
     countNumber.classList.add("animate");
 
-    const intervalo = setInterval(() => {
-      countNumber.classList.remove("animate");
-      void countNumber.offsetWidth;
+    if (numero === 15) {
+      clearInterval(intervalo);
 
-      countNumber.textContent = numero;
-      countNumber.classList.add("animate");
+      setTimeout(() => {
+        burst.classList.add("show");
+      }, 180);
 
-      if (numero === 15) {
-        clearInterval(intervalo);
+      setTimeout(() => {
+        message.classList.add("show");
+      }, 420);
 
-        setTimeout(() => {
-          burst.classList.add("show");
-        }, 180);
+      setTimeout(() => {
+        introFinished = true;
+        musicButton.classList.remove("hidden");
+      }, 700);
+    }
 
-        setTimeout(() => {
-          message.classList.add("show");
-        }, 420);
-
-        setTimeout(() => {
-  overlay.classList.add("hide");
-
-  const weddingSong = document.getElementById("weddingSong");
-  const musicButton = document.getElementById("musicButton");
-
-  if (weddingSong) {
-    weddingSong.play().then(() => {
-      if (musicButton) {
-        musicButton.classList.add("playing");
-      }
-    }).catch(() => {
-      console.log("El navegador bloqueó la reproducción automática.");
-    });
-  }
-
-}, 1400);
-      }
-
-      numero++;
-    }, 140);
-  }
-
-  /* MÚSICA LOCAL MP3 */
- function inicializarMusica() {
-  const musicButton = document.getElementById("musicButton");
-  const weddingSong = document.getElementById("weddingSong");
-  const audioIcon = document.getElementById("audioIcon");
-
-  if (!musicButton || !weddingSong) return;
-
-  let isPlaying = false;
+    numero++;
+  }, 140);
 
   musicButton.addEventListener("click", async () => {
     try {
+      if (!introFinished) return;
+
       if (!isPlaying) {
         await weddingSong.play();
         isPlaying = true;
+        audioIcon.innerHTML = "❚❚";
         musicButton.classList.add("playing");
-        audioIcon.innerHTML = "🔊";
+
+        if (!overlay.classList.contains("hide")) {
+          setTimeout(() => {
+            overlay.classList.add("hide");
+            musicButton.classList.remove("intro-audio-btn");
+          }, 400);
+        }
       } else {
         weddingSong.pause();
         isPlaying = false;
+        audioIcon.innerHTML = "▶";
         musicButton.classList.remove("playing");
-        audioIcon.innerHTML = "🔇";
       }
     } catch (error) {
       console.error("No se pudo reproducir la canción:", error);
@@ -1209,6 +1216,7 @@
   });
 }
 
+  
   /* ANIMACIÓN SUAVE AL HACER SCROLL */
   function inicializarAnimacionesScroll() {
     const observer = new IntersectionObserver((entries) => {
@@ -1225,19 +1233,19 @@
   }
 
   /* INICIO GENERAL */
-  window.addEventListener("load", () => {
-    iniciarIntro15();
-    inicializarMusica();
-    inicializarAnimacionesScroll();
-  });
+ window.addEventListener("load", () => {
+  iniciarIntro15();
+  inicializarAnimacionesScroll();
+});
+  
 </script>
   <audio id="weddingSong" preload="auto">
   <source src="frente-al-mar.mp3" type="audio/mpeg">
   Tu navegador no soporta audio HTML.
 </audio>
 
-  <div id="musicButton" class="audio-btn">
-  <span id="audioIcon">🔇</span>
+  <div id="musicButton" class="audio-btn intro-audio-btn hidden">
+  <span id="audioIcon">▶</span>
 </div>
   
 </body>
