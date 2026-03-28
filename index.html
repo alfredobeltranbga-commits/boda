@@ -692,6 +692,25 @@
       font-size:16px;
     }
 
+#musicButton{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#b69472;
+    color:white;
+    padding:12px 18px;
+    border-radius:30px;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    z-index:999;
+    transition:0.3s;
+}
+
+#musicButton:hover{
+    background:#a68463;
+}
+    
     /* RESPONSIVE */
     @media (max-width: 1100px){
       .stay-grid{grid-template-columns:repeat(2,1fr)}
@@ -1153,5 +1172,39 @@
       observer.observe(section);
     });
   </script>
+
+  <!-- REPRODUCTOR SPOTIFY OCULTO -->
+<iframe id="spotifyPlayer"
+        src="https://open.spotify.com/embed/track/60u6hcpH5Qm1M3xESdNBrB"
+        width="0"
+        height="0"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+  <!-- BOTÓN MÚSICA -->
+<div id="musicButton">
+    ▶ Nuestra canción
+</div>
+
+<script>
+const musicButton = document.getElementById("musicButton");
+const spotifyPlayer = document.getElementById("spotifyPlayer");
+
+let playing = false;
+
+musicButton.addEventListener("click", function(){
+    if(!playing){
+        spotifyPlayer.src += "?autoplay=1";
+        musicButton.innerHTML = "⏸ Pausar música";
+        playing = true;
+    } else {
+        spotifyPlayer.src = spotifyPlayer.src.replace("?autoplay=1","");
+        musicButton.innerHTML = "▶ Nuestra canción";
+        playing = false;
+    }
+});
+</script>
+  
 </body>
 </html>
