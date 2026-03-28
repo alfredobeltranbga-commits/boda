@@ -1087,102 +1087,81 @@
     Alfred & Joha · Santa Marta 2026
   </div>
 
-  <script>
-    /* CONTADOR BODA */
-    const fechaBoda = new Date("2026-11-14T16:00:00").getTime();
+<script>
+  /* CONTADOR BODA */
+  const fechaBoda = new Date("2026-11-14T16:00:00").getTime();
 
-    function actualizarContador() {
-      const ahora = new Date().getTime();
-      const diferencia = fechaBoda - ahora;
+  function actualizarContador() {
+    const ahora = new Date().getTime();
+    const diferencia = fechaBoda - ahora;
 
-      if (diferencia <= 0) {
-        document.getElementById("dias").innerText = "00";
-        document.getElementById("horas").innerText = "00";
-        document.getElementById("minutos").innerText = "00";
-        document.getElementById("segundos").innerText = "00";
-        return;
-      }
-
-      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-      document.getElementById("dias").innerText = dias;
-      document.getElementById("horas").innerText = horas;
-      document.getElementById("minutos").innerText = minutos;
-      document.getElementById("segundos").innerText = segundos;
+    if (diferencia <= 0) {
+      document.getElementById("dias").innerText = "00";
+      document.getElementById("horas").innerText = "00";
+      document.getElementById("minutos").innerText = "00";
+      document.getElementById("segundos").innerText = "00";
+      return;
     }
 
-    setInterval(actualizarContador, 1000);
-    actualizarContador();
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    /* INTRO 15 AÑOS */
-    function iniciarIntro15() {
-      const overlay = document.getElementById("intro-overlay");
-      const countNumber = document.getElementById("count-number");
-      const burst = document.getElementById("celebration-burst");
-      const message = document.getElementById("intro-message");
+    document.getElementById("dias").innerText = dias;
+    document.getElementById("horas").innerText = horas;
+    document.getElementById("minutos").innerText = minutos;
+    document.getElementById("segundos").innerText = segundos;
+  }
 
-      let numero = 1;
+  setInterval(actualizarContador, 1000);
+  actualizarContador();
 
-      countNumber.textContent = "1";
+  /* INTRO 15 AÑOS */
+  function iniciarIntro15() {
+    const overlay = document.getElementById("intro-overlay");
+    const countNumber = document.getElementById("count-number");
+    const burst = document.getElementById("celebration-burst");
+    const message = document.getElementById("intro-message");
+
+    let numero = 1;
+
+    countNumber.textContent = "1";
+    countNumber.classList.add("animate");
+
+    const intervalo = setInterval(() => {
+      countNumber.classList.remove("animate");
+      void countNumber.offsetWidth;
+
+      countNumber.textContent = numero;
       countNumber.classList.add("animate");
 
-      const intervalo = setInterval(() => {
-        countNumber.classList.remove("animate");
-        void countNumber.offsetWidth;
-        countNumber.textContent = numero;
-        countNumber.classList.add("animate");
+      if (numero === 15) {
+        clearInterval(intervalo);
 
-        if (numero === 15) {
-          clearInterval(intervalo);
+        setTimeout(() => {
+          burst.classList.add("show");
+        }, 180);
 
-          setTimeout(() => {
-            burst.classList.add("show");
-          }, 250);
+        setTimeout(() => {
+          message.classList.add("show");
+        }, 420);
 
-          setTimeout(() => {
-            message.classList.add("show");
-          }, 650);
+        setTimeout(() => {
+          overlay.classList.add("hide");
+        }, 1400);
+      }
 
-          setTimeout(() => {
-            overlay.classList.add("hide");
-          }, 2800);
-        }
+      numero++;
+    }, 140);
+  }
 
-        numero++;
-      }, 260);
-    }
-
-    window.addEventListener("load", () => {
-      iniciarIntro15();
-    });
-
-    /* ANIMACIÓN SUAVE AL HACER SCROLL */
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(".fade-up").forEach(section => {
-      observer.observe(section);
-    });
-
-<audio id="weddingSong" preload="auto">
-  <source src="frente-al-mar.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio HTML.
-</audio>
-
-<div id="musicButton">▶ Nuestra canción</div>
-
-    <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  /* MÚSICA LOCAL MP3 */
+  function inicializarMusica() {
     const musicButton = document.getElementById("musicButton");
     const weddingSong = document.getElementById("weddingSong");
+
+    if (!musicButton || !weddingSong) return;
 
     let isPlaying = false;
 
@@ -1202,8 +1181,36 @@
         musicButton.innerHTML = "Error al reproducir";
       }
     });
+  }
+
+  /* ANIMACIÓN SUAVE AL HACER SCROLL */
+  function inicializarAnimacionesScroll() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".fade-up").forEach(section => {
+      observer.observe(section);
+    });
+  }
+
+  /* INICIO GENERAL */
+  window.addEventListener("load", () => {
+    iniciarIntro15();
+    inicializarMusica();
+    inicializarAnimacionesScroll();
   });
 </script>
+  <audio id="weddingSong" preload="auto">
+  <source src="frente-al-mar.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML.
+</audio>
+
+  <div id="musicButton">▶ Nuestra canción</div>
   
 </body>
 </html>
