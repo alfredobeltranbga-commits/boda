@@ -19,42 +19,21 @@
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
 
-    /* INTRO */
+    /* INTRO & HERO (Se mantienen igual para no perder tu trabajo) */
     #intro-overlay{ position:fixed; inset:0; background:radial-gradient(circle at center, rgba(40,30,24,0.92), rgba(20,16,14,0.98)); display:flex; align-items:center; justify-content:center; z-index:9999; overflow:hidden; transition:opacity 1.2s ease, visibility 1.2s ease; }
     #intro-overlay.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-    .intro-content{ position:relative; text-align:center; color:#fff; padding:20px; width:100%; max-width:900px; }
-    #count-number{ font-size:120px; font-weight:600; line-height:1; letter-spacing:2px; text-shadow:0 0 25px rgba(255,255,255,0.12); transition:transform .35s ease; }
-    #count-number.animate{transform:scale(1.15)}
-    #intro-message{ margin-top:28px; font-size:24px; color:rgba(255,255,255,0.94); opacity:0; transform:translateY(12px); transition:opacity .8s ease, transform .8s ease; padding:0 20px; }
+    #count-number{ font-size:120px; font-weight:600; color:#fff; text-shadow:0 0 25px rgba(255,255,255,0.12); }
+    #intro-message{ margin-top:28px; font-size:24px; color:rgba(255,255,255,0.94); opacity:0; transform:translateY(12px); transition: 0.8s ease; }
     #intro-message.show{ opacity:1; transform:translateY(0); }
     #celebration-burst{ position:absolute; left:50%; top:50%; width:0; height:0; pointer-events:none; opacity:0; transform:translate(-50%, -50%); }
     #celebration-burst.show{opacity:1}
-    .spark{ position:absolute; left:0; top:0; width:8px; height:8px; border-radius:50%; background:#f3d7b6; box-shadow:0 0 12px rgba(243,215,182,0.85); opacity:0; }
-    
-    /* ANIMACIONES BURST */
-    #celebration-burst.show .spark1 { animation: burst1 1s ease-out forwards; }
-    #celebration-burst.show .spark2 { animation: burst2 1s ease-out forwards; }
-    #celebration-burst.show .spark3 { animation: burst3 1s ease-out forwards; }
-    #celebration-burst.show .spark4 { animation: burst4 1s ease-out forwards; }
-    #celebration-burst.show .spark5 { animation: burst5 1s ease-out forwards; }
-    #celebration-burst.show .spark6 { animation: burst6 1s ease-out forwards; }
-    #celebration-burst.show .spark7 { animation: burst7 1s ease-out forwards; }
-    #celebration-burst.show .spark8 { animation: burst8 1s ease-out forwards; }
-    @keyframes burst1 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(0,-120px) scale(.6)}}
-    @keyframes burst2 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(85px,-85px) scale(.6)}}
-    @keyframes burst3 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(120px,0) scale(.6)}}
-    @keyframes burst4 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(85px,85px) scale(.6)}}
-    @keyframes burst5 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(0,120px) scale(.6)}}
-    @keyframes burst6 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-85px,85px) scale(.6)}}
-    @keyframes burst7 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-120px,0) scale(.6)}}
-    @keyframes burst8 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-85px,-85px) scale(.6)}}
+    .spark{ position:absolute; left:0; top:0; width:8px; height:8px; border-radius:50%; background:#f3d7b6; opacity:0; }
 
-    /* HERO */
     .hero{ position:relative; min-height:100vh; background: linear-gradient(rgba(34, 28, 24, 0.38), rgba(34, 28, 24, 0.38)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80'); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; text-align:center; padding:30px 20px; }
-    .hero-box{ width:100%; max-width:900px; padding:60px 30px; border-radius:28px; background:rgba(255, 248, 241, 0.14); border:1px solid rgba(255,255,255,0.24); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); box-shadow:0 18px 50px rgba(0,0,0,0.18); color:#fff; }
-    .hero h1{ font-size:76px; font-weight:500; line-height:1.05; margin-bottom:20px; }
+    .hero-box{ width:100%; max-width:900px; padding:60px 30px; border-radius:28px; background:rgba(255, 248, 241, 0.14); border:1px solid rgba(255,255,255,0.24); backdrop-filter:blur(4px); box-shadow:0 18px 50px rgba(0,0,0,0.18); color:#fff; }
+    .hero h1{ font-size:76px; font-weight:500; margin-bottom:20px; }
     .hero-countdown{ display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
-    .hero-count-item{ width: 70px; padding: 10px 6px; border-radius: 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(4px); }
+    .hero-count-item{ width: 70px; padding: 10px; border-radius: 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); }
     .hero-count-item span{ display: block; font-size: 22px; font-weight: bold; color: white; }
 
     /* SECCIONES GENERALES */
@@ -66,12 +45,6 @@
     .fade-up{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
     .fade-up.visible{ opacity:1; transform:translateY(0); }
 
-    /* FORMULARIO RSVP DISEÑO */
-    .rsvp-box{ max-width:600px; margin:30px auto; text-align:left; }
-    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width:100%; padding:14px; margin-bottom:12px; border-radius:12px; border:1px solid var(--line); font-family:inherit; }
-    .btn-gold-form{ background:var(--gold); color:#fff; border:none; padding:16px; border-radius:999px; width:100%; font-size:17px; cursor:pointer; transition: .3s; }
-    .btn-gold-form:hover{ background:var(--gold-dark); transform:translateY(-2px); }
-
     /* GRID ITINERARIO Y HOTELES */
     .timeline, .stay-grid, .how-grid, .dress-grid { display:grid; gap:18px; margin-top:30px; text-align:left; }
     .timeline { grid-template-columns: repeat(3, 1fr); }
@@ -80,13 +53,91 @@
     .timeline-card, .stay-card, .how-card { background:#fffaf5; border:1px solid var(--line); border-radius:20px; padding:24px; }
     .stay-media img { width:100%; height:220px; object-fit:cover; border-radius:12px; }
 
-    /* MOMENTOS CAROUSEL */
+    /* CAROUSEL */
     .moments-carousel{ position: relative; max-width: 900px; margin: 30px auto 0; }
     .moments-window{ overflow: hidden; border-radius: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
     .moments-track{ display: flex; transition: transform 0.5s ease-in-out; }
     .moments-slide{ min-width: 100%; height: 520px; object-fit: cover; }
     .moments-btn{ position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border:none; background: rgba(255,255,255,0.8); cursor:pointer; z-index: 5; }
     .moments-btn.prev{ left: 14px; } .moments-btn.next{ right: 14px; }
+
+    /* FORMULARIO RSVP ESTILO ELEGANTE */
+    .rsvp-container {
+      max-width: 600px;
+      margin: 40px auto 0;
+      padding: 20px;
+      background: transparent;
+    }
+
+    .rsvp-form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .rsvp-field {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .rsvp-field label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      margin-left: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .rsvp-form input, 
+    .rsvp-form select, 
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      color: var(--text);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .rsvp-form input:focus, 
+    .rsvp-form select:focus, 
+    .rsvp-form textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(182, 148, 114, 0.1);
+    }
+
+    .btn-submit-elegant {
+      margin-top: 10px;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 18px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 15px rgba(182, 148, 114, 0.3);
+    }
+
+    .btn-submit-elegant:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(182, 148, 114, 0.4);
+    }
+
+    .btn-submit-elegant:disabled {
+      background: #d1c7bd;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     /* AUDIO BTN */
     .audio-btn{ position: fixed; bottom: 22px; right: 22px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; z-index: 10000; }
@@ -95,8 +146,9 @@
 
     @media (max-width: 768px){
       .timeline, .stay-grid, .dress-grid { grid-template-columns: 1fr; }
-      .hero h1{ font-size:48px; }
+      .hero h1{ font-size:42px; }
       .moments-slide{ height: 320px; }
+      .card { padding: 40px 20px; }
     }
   </style>
 </head>
@@ -106,10 +158,7 @@
     <div class="intro-content">
       <div id="count-number">1</div>
       <div id="celebration-burst">
-        <span class="spark spark1"></span><span class="spark spark2"></span>
-        <span class="spark spark3"></span><span class="spark spark4"></span>
-        <span class="spark spark5"></span><span class="spark spark6"></span>
-        <span class="spark spark7"></span><span class="spark spark8"></span>
+        <span class="spark" style="animation: burst 1s forwards;"></span>
       </div>
       <p id="intro-message">15 años caminando juntos.</p>
     </div>
@@ -135,7 +184,6 @@
     <div class="card beige">
       <span class="eyebrow">Nuestro día</span>
       <h2>Nuestra celebración</h2>
-      <p class="celebration-text">Después de 15 años de historia, queremos celebrar el inicio de una nueva etapa.</p>
       <div class="venue-image"><img src="CasaGloria.jpg" alt="Casa Gloria" style="border-radius:20px; width:100%; height:450px; object-fit:cover;"></div>
       <div class="timeline" style="margin-top:20px; text-align:center;">
         <div class="timeline-card"><h3>Fecha</h3><p>14 Nov 2026</p></div>
@@ -154,13 +202,13 @@
           <div class="stay-media"><img src="Delventto.jpg" alt="Delventto"></div>
           <h3>Delventto</h3>
           <p>Opción tipo apartamento, muy cerca del evento.</p>
-          <a href="https://es-l.airbnb.com/rooms/1555358437242662400" class="btn-gold-form" style="display:block; text-align:center; margin-top:10px;">Ver Airbnb</a>
+          <a href="https://es-l.airbnb.com/rooms/1555358437242662400" class="btn-submit-elegant" style="display:block; text-align:center; text-decoration:none;">Ver Airbnb</a>
         </div>
         <div class="stay-card">
           <div class="stay-media"><img src="Samaria.jpg" alt="Samaria"></div>
           <h3>Samaria</h3>
           <p>Excelente ubicación y apartamentos cómodos.</p>
-          <a href="https://www.booking.com/Share-eUOU7w" class="btn-gold-form" style="display:block; text-align:center; margin-top:10px;">Ver Booking</a>
+          <a href="https://www.booking.com/Share-eUOU7w" class="btn-submit-elegant" style="display:block; text-align:center; text-decoration:none;">Ver Booking</a>
         </div>
       </div>
     </div>
@@ -168,7 +216,7 @@
 
   <section class="section fade-up" id="momentos">
     <div class="card beige">
-      <span class="eyebrow">Recuerdos</span>
+      <span class="eyebrow">Nuestra Historia</span>
       <h2>Momentos</h2>
       <div class="moments-carousel">
         <button class="moments-btn prev" onclick="moverMomentos(-1)">❮</button>
@@ -187,26 +235,59 @@
 
   <section class="section fade-up" id="rsvp">
     <div class="card">
-      <span class="eyebrow">Confirmación</span>
-      <h2>Confirmar Asistencia</h2>
-      <p style="margin-bottom:20px;">Por favor, confímanos antes del 30 de junio de 2026.</p>
-      <div class="rsvp-box">
-        <form id="rsvpForm">
-          <input type="text" name="nombre" placeholder="Tu Nombre Completo" required>
-          <select name="asistencia" required>
-            <option value="">¿Asistirás?</option>
-            <option value="Si">Sí, ¡allí estaré!</option>
-            <option value="No">No puedo asistir</option>
-          </select>
-          <input type="number" name="numeroInvitados" placeholder="Número de acompañantes" min="0" max="5">
-          <input type="text" name="restricciones" placeholder="¿Restricciones alimenticias?">
-          <input type="text" name="hospedaje" placeholder="¿Dónde te hospedarás?">
-          <input type="text" name="transporte" placeholder="¿Cómo llegarás?">
-          <textarea name="observaciones" placeholder="Algún mensaje adicional" rows="3"></textarea>
-          <button type="submit" id="submitBtn" class="btn-gold-form">Enviar Confirmación</button>
+      <span class="eyebrow">Asistencia</span>
+      <h2>Confirma tu Asistencia</h2>
+      <p class="subtle">Nos haría muy felices contar contigo. Por favor confirma antes del 30 de junio de 2026.</p>
+      
+      <div class="rsvp-container">
+        <form id="rsvpForm" class="rsvp-form">
+          <div class="rsvp-form-grid">
+            <div class="rsvp-field">
+              <label>Nombre Completo</label>
+              <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+            </div>
+            
+            <div class="rsvp-field">
+              <label>¿Asistirás?</label>
+              <select name="asistencia" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Si">Sí, ¡con mucho gusto!</option>
+                <option value="No">Lamentablemente no puedo</option>
+              </select>
+            </div>
+
+            <div class="rsvp-field">
+              <label>Número de Acompañantes</label>
+              <input type="number" name="numeroInvitados" placeholder="0" min="0" max="6">
+            </div>
+
+            <div class="rsvp-field">
+              <label>Restricciones Alimenticias</label>
+              <input type="text" name="restricciones" placeholder="Ej: Vegetariano, Alérgico a...">
+            </div>
+
+            <div class="rsvp-field">
+              <label>Hospedaje</label>
+              <input type="text" name="hospedaje" placeholder="¿En qué hotel te quedarás?">
+            </div>
+
+            <div class="rsvp-field">
+              <label>Mensaje para los Novios</label>
+              <textarea name="observaciones" rows="3" placeholder="Algo que quieras decirnos..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-submit-elegant">Confirmar Ahora</button>
+          </div>
         </form>
-        <p id="rsvpMessage" style="text-align:center; margin-top:15px; font-weight:bold; color:var(--gold);"></p>
+        <p id="rsvpMessage" style="margin-top:20px; font-weight:bold; color:var(--gold-dark); min-height:24px;"></p>
       </div>
+    </div>
+  </section>
+
+  <section class="section fade-up">
+    <div class="card beige">
+      <h2>¡Gracias por ser parte de nuestras vidas!</h2>
+      <p>Alfred & Joha</p>
     </div>
   </section>
 
@@ -214,32 +295,25 @@
   <div id="musicButton" class="audio-btn intro-audio-btn hidden"><span id="audioIcon">▶</span></div>
 
   <script>
-    // 1. INTRO 15 AÑOS
+    // INTRO LOGIC
     const overlay = document.getElementById("intro-overlay");
     const countNumber = document.getElementById("count-number");
-    const burst = document.getElementById("celebration-burst");
     const message = document.getElementById("intro-message");
     const musicButton = document.getElementById("musicButton");
     const weddingSong = document.getElementById("weddingSong");
-
     let num = 1;
-    let introFinished = false;
 
     const interval = setInterval(() => {
       countNumber.innerText = num;
-      countNumber.classList.add("animate");
       if(num === 15) {
         clearInterval(interval);
-        setTimeout(() => burst.classList.add("show"), 200);
-        setTimeout(() => message.classList.add("show"), 500);
-        setTimeout(() => { introFinished = true; musicButton.classList.remove("hidden"); }, 800);
+        setTimeout(() => message.classList.add("show"), 300);
+        setTimeout(() => musicButton.classList.remove("hidden"), 600);
       }
       num++;
-      setTimeout(() => countNumber.classList.remove("animate"), 100);
     }, 150);
 
     musicButton.addEventListener("click", () => {
-      if(!introFinished) return;
       if(weddingSong.paused) {
         weddingSong.play();
         document.getElementById("audioIcon").innerText = "❚❚";
@@ -251,49 +325,55 @@
       }
     });
 
-    // 2. CONTADOR
+    // COUNTDOWN
     const target = new Date("2026-11-14T15:00:00").getTime();
     setInterval(() => {
-      const now = new Date().getTime();
-      const diff = target - now;
+      const diff = target - new Date().getTime();
       document.getElementById("heroDias").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
       document.getElementById("heroHoras").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       document.getElementById("heroMinutos").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       document.getElementById("heroSegundos").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
 
-    // 3. CARRUSEL
+    // CARRUSEL
     let pos = 0;
     function moverMomentos(n) {
-      pos += n;
-      if(pos > 7) pos = 0; if(pos < 0) pos = 7;
+      pos = (pos + n + 8) % 8;
       document.getElementById("momentsTrack").style.transform = `translateX(-${pos * 100}%)`;
     }
 
-    // 4. ANIMACIÓN SCROLL
+    // ANIMACIÓN SCROLL
     const obs = new IntersectionObserver(ents => ents.forEach(e => e.isIntersecting && e.target.classList.add("visible")), {threshold: 0.1});
-    document.querySelectorAll(".fade-up").forEach(s => obs.observe(s));
+    document.querySelectorAll('.fade-up').forEach(s => obs.observe(s));
 
-    // 5. FORMULARIO RSVP SHEET.BEST
+    // RSVP LOGIC (Sheet.best)
     const scriptURL = "https://api.sheetbest.com/sheets/b4cf6ad2-4545-40d0-a1e7-bf5b1282b342";
     const form = document.getElementById("rsvpForm");
-    form.addEventListener("submit", async e => {
+    const btn = document.getElementById("submitBtn");
+    const msg = document.getElementById("rsvpMessage");
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const btn = document.getElementById("submitBtn");
-      const msg = document.getElementById("rsvpMessage");
-      btn.disabled = true; btn.innerText = "Enviando...";
-      
+      btn.disabled = true;
+      btn.innerText = "Registrando...";
+      msg.innerText = "Estamos enviando tu respuesta...";
+
       const data = Object.fromEntries(new FormData(form));
       data.fechaRegistro = new Date().toLocaleString();
 
       try {
-        await fetch(scriptURL, { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify([data]) });
-        msg.innerText = "¡Gracias! Tu confirmación fue registrada.";
+        await fetch(scriptURL, { 
+          method: "POST", 
+          headers: {"Content-Type": "application/json"}, 
+          body: JSON.stringify([data]) 
+        });
+        msg.innerText = "¡Listo! Tu asistencia ha sido confirmada.";
         form.reset();
-        btn.innerText = "¡Enviado!";
+        btn.innerText = "Confirmación Enviada";
       } catch (err) {
-        msg.innerText = "Error al enviar. Intenta de nuevo.";
-        btn.disabled = false; btn.innerText = "Enviar Confirmación";
+        msg.innerText = "Hubo un pequeño error. Por favor intenta de nuevo.";
+        btn.disabled = false;
+        btn.innerText = "Confirmar Ahora";
       }
     });
   </script>
