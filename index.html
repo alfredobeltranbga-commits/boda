@@ -652,20 +652,101 @@
     
 
     /* MOMENTS */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-      margin-top:30px;
-    }
+    .moments-carousel{
+  position: relative;
+  max-width: 900px;
+  margin: 30px auto 0;
+}
 
-    .gallery-grid img{
-      width:100%;
-      height:280px;
-      object-fit:cover;
-      border-radius:20px;
-      box-shadow:0 8px 24px rgba(83,63,47,0.10);
-    }
+.moments-window{
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.moments-window:active{
+  cursor: grabbing;
+}
+
+.moments-track{
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.moments-slide{
+  min-width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.moments-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.82);
+  color: #4a3b31;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.moments-btn:hover{
+  background: rgba(255,255,255,0.98);
+}
+
+.moments-btn.prev{
+  left: 14px;
+}
+
+.moments-btn.next{
+  right: 14px;
+}
+
+.moments-dots{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.moments-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d8c9ba;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.moments-dot.active{
+  background: #a68463;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px){
+  .moments-slide{
+    height: 320px;
+  }
+
+  .moments-btn{
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
 
  /* LLUVIA DE SOBRES */   
 .gift-text{
@@ -1103,21 +1184,44 @@
 
   <!-- MOMENTOS -->
   <section class="section fade-up" id="momentos">
-    <div class="card beige">
-      <span class="eyebrow">Nuestra historia</span>
-      <h2>Momentos</h2>
-      <p class="subtle section-intro">
-        Algunos recuerdos, viajes, risas y momentos que nos trajeron hasta este día.
-      </p>
+  <div class="card beige">
+    <span class="eyebrow">Nuestra historia</span>
+    <h2>Momentos</h2>
+    <p class="subtle section-intro">
+      Algunos recuerdos, viajes, risas y momentos que nos trajeron hasta este día.
+    </p>
 
-      <div class="gallery-grid">
-        <img src="foto1.jpg" alt="Momento 1">
-        <img src="foto2.jpg" alt="Momento 2">
-        <img src="foto3.jpg" alt="Momento 3">
-        <img src="foto4.jpg" alt="Momento 4">
+    <div class="moments-carousel">
+      <button class="moments-btn prev" onclick="moverMomentos(-1)">&#10094;</button>
+
+      <div class="moments-window" id="momentsWindow">
+        <div class="moments-track" id="momentsTrack">
+          <img src="foto1.jpg" alt="Momento 1" class="moments-slide">
+          <img src="foto2.jpg" alt="Momento 2" class="moments-slide">
+          <img src="foto3.jpg" alt="Momento 3" class="moments-slide">
+          <img src="foto4.jpg" alt="Momento 4" class="moments-slide">
+          <img src="foto5.jpg" alt="Momento 5" class="moments-slide">
+          <img src="foto6.jpg" alt="Momento 6" class="moments-slide">
+          <img src="foto7.jpg" alt="Momento 7" class="moments-slide">
+          <img src="foto8.jpg" alt="Momento 8" class="moments-slide">
+        </div>
       </div>
+
+      <button class="moments-btn next" onclick="moverMomentos(1)">&#10095;</button>
     </div>
-  </section>
+
+    <div class="moments-dots">
+      <span class="moments-dot active" onclick="irAMomento(0)"></span>
+      <span class="moments-dot" onclick="irAMomento(1)"></span>
+      <span class="moments-dot" onclick="irAMomento(2)"></span>
+      <span class="moments-dot" onclick="irAMomento(3)"></span>
+      <span class="moments-dot" onclick="irAMomento(4)"></span>
+      <span class="moments-dot" onclick="irAMomento(5)"></span>
+      <span class="moments-dot" onclick="irAMomento(6)"></span>
+      <span class="moments-dot" onclick="irAMomento(7)"></span>
+    </div>
+  </div>
+</section>
 
   <!-- RSVP -->
   <section class="section fade-up" id="rsvp">
@@ -1260,6 +1364,105 @@
   });
 }
 
+  /* CARRUSEL MOMENTOS */
+let momentoActual = 0;
+const totalMomentos = 8;
+let autoMomentos;
+let startX = 0;
+let endX = 0;
+let isDragging = false;
+
+function actualizarMomentos() {
+  const track = document.getElementById("momentsTrack");
+  const dots = document.querySelectorAll(".moments-dot");
+
+  if (!track) return;
+
+  track.style.transform = `translateX(-${momentoActual * 100}%)`;
+
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("active", index === momentoActual);
+  });
+}
+
+function moverMomentos(direccion) {
+  momentoActual += direccion;
+
+  if (momentoActual < 0) {
+    momentoActual = totalMomentos - 1;
+  }
+
+  if (momentoActual >= totalMomentos) {
+    momentoActual = 0;
+  }
+
+  actualizarMomentos();
+}
+
+function irAMomento(index) {
+  momentoActual = index;
+  actualizarMomentos();
+  reiniciarAutoMomentos();
+}
+
+function iniciarAutoMomentos() {
+  autoMomentos = setInterval(() => {
+    moverMomentos(1);
+  }, 5000);
+}
+
+function reiniciarAutoMomentos() {
+  clearInterval(autoMomentos);
+  iniciarAutoMomentos();
+}
+
+function manejarSwipeMomentos() {
+  const momentsWindow = document.getElementById("momentsWindow");
+  if (!momentsWindow) return;
+
+  momentsWindow.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  momentsWindow.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    detectarSwipe();
+  });
+
+  momentsWindow.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
+  });
+
+  momentsWindow.addEventListener("mouseup", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    endX = e.clientX;
+    detectarSwipe();
+  });
+
+  momentsWindow.addEventListener("mouseleave", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    endX = e.clientX;
+    detectarSwipe();
+  });
+
+  function detectarSwipe() {
+    const diferencia = startX - endX;
+
+    if (Math.abs(diferencia) > 50) {
+      if (diferencia > 0) {
+        moverMomentos(1);
+      } else {
+        moverMomentos(-1);
+      }
+      reiniciarAutoMomentos();
+    }
+  }
+}
+
+
   
   /* ANIMACIÓN SUAVE AL HACER SCROLL */
   function inicializarAnimacionesScroll() {
@@ -1280,6 +1483,10 @@
  window.addEventListener("load", () => {
   iniciarIntro15();
   inicializarAnimacionesScroll();
+
+  manejarSwipeMomentos();
+  iniciarAutoMomentos();
+  actualizarMomentos();
 });
   
 </script>
