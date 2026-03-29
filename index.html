@@ -37,12 +37,16 @@
     /* HERO */
     .hero{ position:relative; min-height:100vh; background: linear-gradient(rgba(34, 28, 24, 0.38), rgba(34, 28, 24, 0.38)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80'); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; text-align:center; padding:30px 20px; }
     .hero-box{ width:100%; max-width:900px; padding:60px 30px; border-radius:28px; background:rgba(255, 248, 241, 0.14); border:1px solid rgba(255,255,255,0.24); backdrop-filter:blur(4px); color:#fff; }
-    .hero h1{ font-size:76px; font-weight:500; margin-bottom:20px; }
+    
+    .hero h1{ font-size:76px; font-weight:500; margin-bottom:10px; }
+    .hero .phrase{ font-size:32px; font-weight:bold; font-style:italic; margin: 15px 0; color: #fff; text-shadow: 1px 1px 10px rgba(0,0,0,0.3); } /* Ajuste frase */
+    .hero .date-place{ font-size:22px; letter-spacing:.5px; margin-bottom:30px; }
+
     .hero-countdown{ display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
     .hero-count-item{ width: 70px; padding: 10px; border-radius: 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); }
     .hero-count-item span{ display: block; font-size: 22px; font-weight: bold; }
 
-    /* GUÍA DESLIZA MEJORADA */
+    /* GUÍA DESLIZA */
     .scroll-guide { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); color: #fff; text-align: center; z-index: 10; animation: bounce 2s infinite; white-space: nowrap; }
     .scroll-guide span { font-size: 28px; display: block; margin-bottom: 12px; line-height: 1; }
     .scroll-guide p { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; font-weight: bold; }
@@ -53,7 +57,7 @@
     .card{ background:rgba(255,255,255,.9); border-radius:var(--radius); padding:52px 32px; box-shadow:var(--shadow); text-align:center; }
     .card.beige{background:var(--bg-soft)}
     .eyebrow{ color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-size:12px; margin-bottom:12px; display:inline-block; }
-    h2{ font-size:40px; margin-bottom:18px; color:#4a3b31; line-height: 1.0; } /* Títulos más pegados */
+    h2{ font-size:32px; margin-bottom:18px; color:#4a3b31; line-height: 1.1; font-weight: 500; } /* Títulos más pequeños */
     .fade-up{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
     .fade-up.visible{ opacity:1; transform:translateY(0); }
 
@@ -67,29 +71,51 @@
     .gift-qr-wrap { display: flex; justify-content: center; margin-top: 25px; }
     .gift-qr { width: 220px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background: #fff; padding: 10px; }
 
-    /* CARRUSEL HORIZONTAL COMPLETO */
+    /* CARRUSEL */
     .moments-carousel{ position: relative; max-width: 100%; margin: 30px auto 0; overflow:hidden; border-radius: 24px; background: #000; }
     .moments-track{ display: flex; transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1); align-items: center; }
     .moments-slide{ min-width: 100%; max-height: 600px; object-fit: contain; }
-    .moments-btn{ position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; border-radius: 50%; border:none; background: rgba(255,255,255,0.7); cursor:pointer; z-index: 5; font-size: 20px; transition: 0.3s; }
+    .moments-btn{ position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; border-radius: 50%; border:none; background: rgba(255,255,255,0.7); cursor:pointer; z-index: 5; font-size: 20px; }
     .moments-btn.prev{ left: 15px; } .moments-btn.next{ right: 15px; }
 
-    /* RSVP FORM */
-    .rsvp-box { max-width: 600px; margin: 0 auto; text-align: left; }
+    /* RSVP ESTILO BOTÓN TRANSPARENTE */
+    .rsvp-box { max-width: 600px; margin: 0 auto; text-align: center; }
+    .btn-toggle-rsvp { 
+      background: rgba(182, 148, 114, 0.15); /* Transparencia */
+      color: var(--gold-dark); 
+      border: 1px solid var(--gold); 
+      padding: 16px 40px; 
+      border-radius: 50px; 
+      font-size: 18px; 
+      font-weight: bold; 
+      cursor: pointer; 
+      transition: 0.3s; 
+      white-space: nowrap; /* Una sola línea */
+      margin-bottom: 20px;
+    }
+    .btn-toggle-rsvp:hover { background: rgba(182, 148, 114, 0.25); }
+    
+    #form-container { 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: max-height 0.8s ease-out; 
+      text-align: left; 
+    }
+    #form-container.show { max-height: 1200px; } /* Desplegar */
+
     .rsvp-form label { display: block; font-size: 13px; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 5px 5px; font-weight: bold; }
     .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid var(--line); font-family: inherit; font-size: 16px; outline: none; background: #fff; }
     .btn-submit { background: var(--gold); color: white; border: none; padding: 18px; border-radius: 50px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 25px; }
 
-    /* BOTÓN AUDIO BLINDADO */
+    /* BOTÓN AUDIO */
     .audio-btn { background: var(--gold); color: white; display: flex; align-items: center; justify-content: center; z-index: 100000; cursor: pointer; border: 2px solid white; transition: all 0.6s ease; box-shadow: var(--shadow); }
     .intro-audio-btn { position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%); width: 80px; height: 80px; font-size: 28px; border-radius: 50%; animation: pulse 2s infinite; }
     .fixed-audio-btn { position: fixed !important; bottom: 25px !important; right: 25px !important; left: auto !important; transform: none !important; width: 55px !important; height: 55px !important; font-size: 18px !important; border-radius: 50% !important; opacity: 0.8 !important; }
     @keyframes pulse { 0% {box-shadow: 0 0 0 0 rgba(182, 148, 114, 0.7);} 70% {box-shadow: 0 0 0 15px rgba(182, 148, 114, 0);} 100% {box-shadow: 0 0 0 0 rgba(182, 148, 114, 0);} }
     .hidden { display: none; }
 
-    /* MENSAJE FINAL */
-    .final-message { margin-top: 40px; color: var(--muted); font-style: italic; font-size: 20px; }
-    .footer-names { font-family: "Georgia", serif; font-size: 32px; color: var(--gold-dark); margin-top: 10px; }
+    /* CIERRE */
+    .footer-names { font-size: 32px; color: var(--gold-dark); margin-top: 10px; font-style: italic; }
 
     @media (max-width: 900px){ .timeline, .how-grid, .stay-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 45px; } .moments-slide { max-height: 400px; } }
   </style>
@@ -114,8 +140,8 @@
     <div class="hero-box">
       <div class="overline">Nos casamos</div>
       <h1>Alfred & Joha</h1>
+      <p class="phrase">"El mar será testigo del amor"</p>
       <div class="divider"></div>
-      <p class="phrase">El mar será testigo del amor</p>
       <p class="date-place">14 de noviembre de 2026 · Santa Marta, Colombia</p>
       <div class="hero-countdown">
         <div class="hero-count-item"><span id="heroDias">00</span><small>Días</small></div>
@@ -181,10 +207,7 @@
       <span class="eyebrow">Detalle</span>
       <h2>Lluvia de sobres</h2>
       <p>Tu presencia es nuestro mejor regalo. Pero si deseas tener un detalle para nuestra nueva etapa, puedes hacerlo aquí:</p>
-      <div class="gift-qr-wrap">
-        <img src="qr-boda.png" alt="QR Regalo" class="gift-qr">
-      </div>
-      <p style="margin-top:15px; font-size:14px; color:var(--muted);">Escanea desde tu app bancaria.</p>
+      <div class="gift-qr-wrap"><img src="qr-boda.png" alt="QR Regalo" class="gift-qr"></div>
     </div>
   </section>
 
@@ -210,24 +233,28 @@
       <span class="eyebrow">Confirmación</span>
       <h2>Confirmar asistencia</h2>
       <div class="rsvp-box">
-        <form id="rsvpForm" class="rsvp-form">
-          <label>Nombre completo</label>
-          <input type="text" name="Nombre" placeholder="Tu nombre" required>
-          <label>¿Asistirás?</label>
-          <select name="Asistencia" required>
-            <option value="Si">Sí, ¡con mucho gusto!</option>
-            <option value="No">No podré asistir</option>
-          </select>
-          <label>Número de invitados</label>
-          <input type="number" name="NumeroInvitados" min="1" max="6" value="1">
-          <label>Nombre del Hospedaje</label>
-          <input type="text" name="Nombre_Hospedaje" placeholder="¿Dónde te quedarás?">
-          <label>¿Viajas en Carro?</label>
-          <select name="Viajas_en_Carro"><option value="Si">Sí</option><option value="No">No</option></select>
-          <label>Observaciones</label>
-          <textarea name="Observaciones" rows="3" placeholder="Mensajes especiales o restricciones..."></textarea>
-          <button type="submit" id="submitBtn" class="btn-submit">Enviar Confirmación</button>
-        </form>
+        <button class="btn-toggle-rsvp" id="btnShowForm">Confirmar Asistencia</button>
+        
+        <div id="form-container">
+          <form id="rsvpForm" class="rsvp-form">
+            <label>Nombre completo</label>
+            <input type="text" name="Nombre" placeholder="Tu nombre" required>
+            <label>¿Asistirás?</label>
+            <select name="Asistencia" required>
+              <option value="Si">Sí, ¡con mucho gusto!</option>
+              <option value="No">No podré asistir</option>
+            </select>
+            <label>Número de invitados</label>
+            <input type="number" name="NumeroInvitados" min="1" max="6" value="1">
+            <label>Nombre del Hospedaje</label>
+            <input type="text" name="Nombre_Hospedaje" placeholder="¿Dónde te quedarás?">
+            <label>¿Viajas en Carro?</label>
+            <select name="Viajas_en_Carro"><option value="Si">Sí</option><option value="No">No</option></select>
+            <label>Observaciones</label>
+            <textarea name="Observaciones" rows="3" placeholder="Mensajes especiales o restricciones..."></textarea>
+            <button type="submit" id="submitBtn" class="btn-submit">Enviar Confirmación</button>
+          </form>
+        </div>
         <p id="rsvpMessage" style="text-align:center; margin-top:15px; font-weight:bold; color:var(--gold-dark);"></p>
       </div>
     </div>
@@ -235,15 +262,21 @@
 
   <section class="section fade-up">
     <div class="card beige">
-      <p class="final-message">Gracias por ser parte de este sueño que apenas comienza.</p>
+      <p style="font-style: italic; font-size: 16px;">Gracias por ser parte de nuestra historia.</p>
       <p class="footer-names">Con Amor, Alfred & Joha</p>
-      <p style="margin-top:15px; color:var(--muted); font-size:14px;">Santa Marta, Colombia · 2026</p>
+      <p style="margin-top:10px; color:var(--muted); font-size:14px;">Santa Marta, Colombia · 2026</p>
     </div>
   </section>
 
   <audio id="weddingSong" loop><source src="Frente-al-mar.mp3" type="audio/mpeg"></audio>
 
   <script>
+    // MOSTRAR FORMULARIO
+    document.getElementById("btnShowForm").addEventListener("click", function() {
+      document.getElementById("form-container").classList.toggle("show");
+      this.style.display = "none"; // Desaparecer botón tras clic
+    });
+
     const overlay = document.getElementById("intro-overlay");
     const countNumber = document.getElementById("count-number");
     const musicBtn = document.getElementById("musicButton");
@@ -286,14 +319,13 @@
 
     let pos = 0;
     const track = document.getElementById("momentsTrack");
-    function updateSlide() { track.style.transform = `translateX(-${pos * 100}%)`; }
-    function moverManual(n) { pos = (pos + n + 8) % 8; updateSlide(); resetAuto(); }
-    let autoSlide = setInterval(() => { pos = (pos + 1) % 8; updateSlide(); }, 5000);
-    function resetAuto() { clearInterval(autoSlide); autoSlide = setInterval(() => { pos = (pos + 1) % 8; updateSlide(); }, 5000); }
+    function moverManual(n) { pos = (pos + n + 8) % 8; track.style.transform = `translateX(-${pos * 100}%)`; }
+    let autoSlide = setInterval(() => { pos = (pos + 1) % 8; track.style.transform = `translateX(-${pos * 100}%)`; }, 5000);
 
     const observer = new IntersectionObserver(ents => ents.forEach(e => e.isIntersecting && e.target.classList.add("visible")), { threshold: 0.1 });
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 
+    // RSVP
     const scriptURL = "https://api.sheetbest.com/sheets/b4cf6ad2-4545-40d0-a1e7-bf5b1282b342";
     const rsvpForm = document.getElementById("rsvpForm");
     rsvpForm.addEventListener("submit", async (e) => {
