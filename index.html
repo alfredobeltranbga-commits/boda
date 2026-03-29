@@ -15,73 +15,88 @@
 
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{font-family: "Georgia", serif; background:var(--bg); color:var(--text); line-height:1.6;}
+    body{ font-family: "Georgia", serif; background:var(--bg); color:var(--text); line-height:1.6; }
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
 
-    /* INTRO & OVERLAY */
-    #intro-overlay{
-      position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center;
-      background:radial-gradient(circle at center, rgba(40,30,24,0.92), rgba(20,16,14,0.98));
-      transition:opacity 1.2s ease, visibility 1.2s ease;
-    }
-    #intro-overlay.hide{opacity:0; visibility:hidden; pointer-events:none;}
-    .intro-content{text-align:center; color:#fff; width:100%; max-width:900px;}
-    #count-number{font-size:120px; font-weight:600; text-shadow:0 0 25px rgba(255,255,255,0.12);}
-    #intro-message{font-size:24px; opacity:0; transform:translateY(12px); transition: 0.8s ease;}
-    #intro-message.show{opacity:1; transform:translateY(0);}
+    /* INTRO */
+    #intro-overlay{ position:fixed; inset:0; background:radial-gradient(circle at center, rgba(40,30,24,0.92), rgba(20,16,14,0.98)); display:flex; align-items:center; justify-content:center; z-index:9999; overflow:hidden; transition:opacity 1.2s ease, visibility 1.2s ease; }
+    #intro-overlay.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+    .intro-content{ position:relative; text-align:center; color:#fff; padding:20px; width:100%; max-width:900px; }
+    #count-number{ font-size:120px; font-weight:600; line-height:1; letter-spacing:2px; text-shadow:0 0 25px rgba(255,255,255,0.12); transition:transform .35s ease; }
+    #count-number.animate{transform:scale(1.15)}
+    #intro-message{ margin-top:28px; font-size:24px; color:rgba(255,255,255,0.94); opacity:0; transform:translateY(12px); transition:opacity .8s ease, transform .8s ease; padding:0 20px; }
+    #intro-message.show{ opacity:1; transform:translateY(0); }
+    #celebration-burst{ position:absolute; left:50%; top:50%; width:0; height:0; pointer-events:none; opacity:0; transform:translate(-50%, -50%); }
+    #celebration-burst.show{opacity:1}
+    .spark{ position:absolute; left:0; top:0; width:8px; height:8px; border-radius:50%; background:#f3d7b6; box-shadow:0 0 12px rgba(243,215,182,0.85); opacity:0; }
+    
+    /* ANIMACIONES BURST */
+    #celebration-burst.show .spark1 { animation: burst1 1s ease-out forwards; }
+    #celebration-burst.show .spark2 { animation: burst2 1s ease-out forwards; }
+    #celebration-burst.show .spark3 { animation: burst3 1s ease-out forwards; }
+    #celebration-burst.show .spark4 { animation: burst4 1s ease-out forwards; }
+    #celebration-burst.show .spark5 { animation: burst5 1s ease-out forwards; }
+    #celebration-burst.show .spark6 { animation: burst6 1s ease-out forwards; }
+    #celebration-burst.show .spark7 { animation: burst7 1s ease-out forwards; }
+    #celebration-burst.show .spark8 { animation: burst8 1s ease-out forwards; }
+    @keyframes burst1 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(0,-120px) scale(.6)}}
+    @keyframes burst2 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(85px,-85px) scale(.6)}}
+    @keyframes burst3 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(120px,0) scale(.6)}}
+    @keyframes burst4 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(85px,85px) scale(.6)}}
+    @keyframes burst5 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(0,120px) scale(.6)}}
+    @keyframes burst6 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-85px,85px) scale(.6)}}
+    @keyframes burst7 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-120px,0) scale(.6)}}
+    @keyframes burst8 {0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-85px,-85px) scale(.6)}}
 
     /* HERO */
-    .hero{
-      position:relative; min-height:100vh;
-      background: linear-gradient(rgba(34, 28, 24, 0.4), rgba(34, 28, 24, 0.4)), 
-                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80');
-      background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center;
-    }
-    .hero-box{
-      background:rgba(255, 248, 241, 0.15); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-      padding:60px 30px; border-radius:var(--radius); border:1px solid rgba(255,255,255,0.2);
-      color:#fff; text-align:center; max-width:900px; width:90%;
-    }
-    .hero h1{font-size:76px; font-weight:500; margin-bottom:20px;}
-    .divider{width:80px; height:1px; background:rgba(255,255,255,.7); margin:0 auto 24px;}
-    .hero .phrase{font-size:28px; font-style:italic; margin-bottom:16px;}
+    .hero{ position:relative; min-height:100vh; background: linear-gradient(rgba(34, 28, 24, 0.38), rgba(34, 28, 24, 0.38)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80'); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; text-align:center; padding:30px 20px; }
+    .hero-box{ width:100%; max-width:900px; padding:60px 30px; border-radius:28px; background:rgba(255, 248, 241, 0.14); border:1px solid rgba(255,255,255,0.24); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); box-shadow:0 18px 50px rgba(0,0,0,0.18); color:#fff; }
+    .hero h1{ font-size:76px; font-weight:500; line-height:1.05; margin-bottom:20px; }
+    .hero-countdown{ display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
+    .hero-count-item{ width: 70px; padding: 10px 6px; border-radius: 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(4px); }
+    .hero-count-item span{ display: block; font-size: 22px; font-weight: bold; color: white; }
 
-    /* COUNTDOWN HERO */
-    .hero-countdown{display:flex; justify-content:center; gap:10px; margin-top:20px;}
-    .hero-count-item{
-      background:rgba(255,255,255,0.1); padding:15px; border-radius:14px; min-width:70px;
-      border:1px solid rgba(255,255,255,0.2);
-    }
-    .hero-count-item span{display:block; font-size:24px; font-weight:bold;}
-    .hero-count-item small{font-size:10px; text-transform:uppercase; opacity:0.8;}
-
-    /* SECTIONS */
-    .section{max-width:var(--max); margin:80px auto; padding:0 20px;}
-    .card{background:#fff; border-radius:var(--radius); padding:50px 30px; box-shadow:var(--shadow); text-align:center;}
+    /* SECCIONES GENERALES */
+    .section{ max-width:var(--max); margin:74px auto; padding:0 20px; }
+    .card{ background:rgba(255,255,255,.9); border-radius:var(--radius); padding:52px 32px; box-shadow:var(--shadow); text-align:center; }
     .card.beige{background:var(--bg-soft)}
-    .eyebrow{color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-size:12px; margin-bottom:10px; display:block;}
-    h2{font-size:40px; margin-bottom:20px; color:#4a3b31;}
-    .fade-up{opacity:0; transform:translateY(30px); transition: 0.8s ease-out;}
-    .fade-up.visible{opacity:1; transform:translateY(0);}
+    .eyebrow{ color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-size:12px; margin-bottom:12px; display:inline-block; }
+    h2{ font-size:40px; font-weight:500; margin-bottom:18px; color:#4a3b31; }
+    .fade-up{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+    .fade-up.visible{ opacity:1; transform:translateY(0); }
 
-    /* FORM STYLES */
-    .rsvp-box{max-width:600px; margin:30px auto; text-align:left;}
-    .rsvp-form input, .rsvp-form select, .rsvp-form textarea{
-      width:100%; padding:15px; margin-bottom:15px; border-radius:12px; border:1px solid var(--line); font-family:inherit;
-    }
-    .btn-gold{
-      background:var(--gold); color:#fff; border:none; padding:18px 30px; border-radius:999px;
-      width:100%; font-size:18px; cursor:pointer; transition: 0.3s;
-    }
-    .btn-gold:hover{background:var(--gold-dark); transform:translateY(-2px);}
-    .btn-gold:disabled{background:#ccc; cursor:not-allowed;}
+    /* FORMULARIO RSVP DISEÑO */
+    .rsvp-box{ max-width:600px; margin:30px auto; text-align:left; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width:100%; padding:14px; margin-bottom:12px; border-radius:12px; border:1px solid var(--line); font-family:inherit; }
+    .btn-gold-form{ background:var(--gold); color:#fff; border:none; padding:16px; border-radius:999px; width:100%; font-size:17px; cursor:pointer; transition: .3s; }
+    .btn-gold-form:hover{ background:var(--gold-dark); transform:translateY(-2px); }
 
-    /* RESPONSIVE */
+    /* GRID ITINERARIO Y HOTELES */
+    .timeline, .stay-grid, .how-grid, .dress-grid { display:grid; gap:18px; margin-top:30px; text-align:left; }
+    .timeline { grid-template-columns: repeat(3, 1fr); }
+    .stay-grid { grid-template-columns: repeat(2, 1fr); }
+    .dress-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeline-card, .stay-card, .how-card { background:#fffaf5; border:1px solid var(--line); border-radius:20px; padding:24px; }
+    .stay-media img { width:100%; height:220px; object-fit:cover; border-radius:12px; }
+
+    /* MOMENTOS CAROUSEL */
+    .moments-carousel{ position: relative; max-width: 900px; margin: 30px auto 0; }
+    .moments-window{ overflow: hidden; border-radius: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+    .moments-track{ display: flex; transition: transform 0.5s ease-in-out; }
+    .moments-slide{ min-width: 100%; height: 520px; object-fit: cover; }
+    .moments-btn{ position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border:none; background: rgba(255,255,255,0.8); cursor:pointer; z-index: 5; }
+    .moments-btn.prev{ left: 14px; } .moments-btn.next{ right: 14px; }
+
+    /* AUDIO BTN */
+    .audio-btn{ position: fixed; bottom: 22px; right: 22px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; z-index: 10000; }
+    .intro-audio-btn{ position: absolute; left: 50%; bottom: 90px; transform: translateX(-50%); }
+    .hidden { display: none; }
+
     @media (max-width: 768px){
-      .hero h1{font-size:48px;}
-      .hero-count-item{min-width:60px; padding:10px;}
-      h2{font-size:32px;}
+      .timeline, .stay-grid, .dress-grid { grid-template-columns: 1fr; }
+      .hero h1{ font-size:48px; }
+      .moments-slide{ height: 320px; }
     }
   </style>
 </head>
@@ -90,6 +105,12 @@
   <div id="intro-overlay">
     <div class="intro-content">
       <div id="count-number">1</div>
+      <div id="celebration-burst">
+        <span class="spark spark1"></span><span class="spark spark2"></span>
+        <span class="spark spark3"></span><span class="spark spark4"></span>
+        <span class="spark spark5"></span><span class="spark spark6"></span>
+        <span class="spark spark7"></span><span class="spark spark8"></span>
+      </div>
       <p id="intro-message">15 años caminando juntos.</p>
     </div>
   </div>
@@ -100,13 +121,12 @@
       <h1>Alfred & Joha</h1>
       <div class="divider"></div>
       <p class="phrase">El mar será testigo del amor</p>
-      <p class="date-place">14 de noviembre de 2026 · Santa Marta</p>
-      
+      <p class="date-place">14 de noviembre de 2026 · Santa Marta, Colombia</p>
       <div class="hero-countdown">
-        <div class="hero-count-item"><span id="days">00</span><small>Días</small></div>
-        <div class="hero-count-item"><span id="hours">00</span><small>Horas</small></div>
-        <div class="hero-count-item"><span id="mins">00</span><small>Min</small></div>
-        <div class="hero-count-item"><span id="secs">00</span><small>Seg</small></div>
+        <div class="hero-count-item"><span id="heroDias">00</span><small>Días</small></div>
+        <div class="hero-count-item"><span id="heroHoras">00</span><small>Horas</small></div>
+        <div class="hero-count-item"><span id="heroMinutos">00</span><small>Min</small></div>
+        <div class="hero-count-item"><span id="heroSegundos">00</span><small>Seg</small></div>
       </div>
     </div>
   </section>
@@ -115,113 +135,165 @@
     <div class="card beige">
       <span class="eyebrow">Nuestro día</span>
       <h2>Nuestra celebración</h2>
-      <p>Después de 15 años de historia, queremos celebrar el inicio de una nueva etapa. Casa Gloria, Santa Marta, 3:00 PM.</p>
-      <div style="margin-top:20px;">
-        <img src="CasaGloria.jpg" alt="Lugar" style="border-radius:20px; width:100%; max-height:400px; object-fit:cover;">
+      <p class="celebration-text">Después de 15 años de historia, queremos celebrar el inicio de una nueva etapa.</p>
+      <div class="venue-image"><img src="CasaGloria.jpg" alt="Casa Gloria" style="border-radius:20px; width:100%; height:450px; object-fit:cover;"></div>
+      <div class="timeline" style="margin-top:20px; text-align:center;">
+        <div class="timeline-card"><h3>Fecha</h3><p>14 Nov 2026</p></div>
+        <div class="timeline-card"><h3>Hora</h3><p>3:00 PM</p></div>
+        <div class="timeline-card"><h3>Lugar</h3><p>Casa Gloria</p></div>
       </div>
     </div>
   </section>
 
-  <section class="section fade-up" id="confirmacion">
+  <section id="alojarse" class="section fade-up">
     <div class="card">
-      <span class="eyebrow">RSVP</span>
+      <span class="eyebrow">Hospedaje</span>
+      <h2>Dónde alojarse</h2>
+      <div class="stay-grid">
+        <div class="stay-card">
+          <div class="stay-media"><img src="Delventto.jpg" alt="Delventto"></div>
+          <h3>Delventto</h3>
+          <p>Opción tipo apartamento, muy cerca del evento.</p>
+          <a href="https://es-l.airbnb.com/rooms/1555358437242662400" class="btn-gold-form" style="display:block; text-align:center; margin-top:10px;">Ver Airbnb</a>
+        </div>
+        <div class="stay-card">
+          <div class="stay-media"><img src="Samaria.jpg" alt="Samaria"></div>
+          <h3>Samaria</h3>
+          <p>Excelente ubicación y apartamentos cómodos.</p>
+          <a href="https://www.booking.com/Share-eUOU7w" class="btn-gold-form" style="display:block; text-align:center; margin-top:10px;">Ver Booking</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-up" id="momentos">
+    <div class="card beige">
+      <span class="eyebrow">Recuerdos</span>
+      <h2>Momentos</h2>
+      <div class="moments-carousel">
+        <button class="moments-btn prev" onclick="moverMomentos(-1)">❮</button>
+        <div class="moments-window">
+          <div class="moments-track" id="momentsTrack">
+            <img src="foto1.jpg" class="moments-slide"><img src="foto2.jpg" class="moments-slide">
+            <img src="foto3.jpg" class="moments-slide"><img src="foto4.jpg" class="moments-slide">
+            <img src="foto5.jpg" class="moments-slide"><img src="foto6.jpg" class="moments-slide">
+            <img src="foto7.jpg" class="moments-slide"><img src="foto8.jpg" class="moments-slide">
+          </div>
+        </div>
+        <button class="moments-btn next" onclick="moverMomentos(1)">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-up" id="rsvp">
+    <div class="card">
+      <span class="eyebrow">Confirmación</span>
       <h2>Confirmar Asistencia</h2>
+      <p style="margin-bottom:20px;">Por favor, confímanos antes del 30 de junio de 2026.</p>
       <div class="rsvp-box">
-        <form id="rsvpForm" class="rsvp-form">
-          <input type="text" name="nombre" placeholder="Nombre completo" required>
+        <form id="rsvpForm">
+          <input type="text" name="nombre" placeholder="Tu Nombre Completo" required>
           <select name="asistencia" required>
             <option value="">¿Asistirás?</option>
-            <option value="Si">Sí, con gusto</option>
-            <option value="No">No podré asistir</option>
+            <option value="Si">Sí, ¡allí estaré!</option>
+            <option value="No">No puedo asistir</option>
           </select>
           <input type="number" name="numeroInvitados" placeholder="Número de acompañantes" min="0" max="5">
-          <textarea name="observaciones" placeholder="Mensaje para los novios o restricciones alimenticias" rows="3"></textarea>
-          
-          <button type="submit" id="submitBtn" class="btn-gold">Enviar Confirmación</button>
+          <input type="text" name="restricciones" placeholder="¿Restricciones alimenticias?">
+          <input type="text" name="hospedaje" placeholder="¿Dónde te hospedarás?">
+          <input type="text" name="transporte" placeholder="¿Cómo llegarás?">
+          <textarea name="observaciones" placeholder="Algún mensaje adicional" rows="3"></textarea>
+          <button type="submit" id="submitBtn" class="btn-gold-form">Enviar Confirmación</button>
         </form>
         <p id="rsvpMessage" style="text-align:center; margin-top:15px; font-weight:bold; color:var(--gold);"></p>
       </div>
     </div>
   </section>
 
-  <script>
-    // 1. INTRO LOGIC (Optimizada para no bloquear)
-    const overlay = document.getElementById('intro-overlay');
-    const countEl = document.getElementById('count-number');
-    const msgEl = document.getElementById('intro-message');
-    let count = 1;
+  <audio id="weddingSong" preload="auto" loop><source src="Frente-al-mar.mp3" type="audio/mpeg"></audio>
+  <div id="musicButton" class="audio-btn intro-audio-btn hidden"><span id="audioIcon">▶</span></div>
 
-    const introInterval = setInterval(() => {
-      count++;
-      countEl.innerText = count;
-      if(count === 15) {
-        clearInterval(introInterval);
-        msgEl.classList.add('show');
-        setTimeout(() => {
-          overlay.classList.add('hide');
-        }, 1500);
+  <script>
+    // 1. INTRO 15 AÑOS
+    const overlay = document.getElementById("intro-overlay");
+    const countNumber = document.getElementById("count-number");
+    const burst = document.getElementById("celebration-burst");
+    const message = document.getElementById("intro-message");
+    const musicButton = document.getElementById("musicButton");
+    const weddingSong = document.getElementById("weddingSong");
+
+    let num = 1;
+    let introFinished = false;
+
+    const interval = setInterval(() => {
+      countNumber.innerText = num;
+      countNumber.classList.add("animate");
+      if(num === 15) {
+        clearInterval(interval);
+        setTimeout(() => burst.classList.add("show"), 200);
+        setTimeout(() => message.classList.add("show"), 500);
+        setTimeout(() => { introFinished = true; musicButton.classList.remove("hidden"); }, 800);
       }
+      num++;
+      setTimeout(() => countNumber.classList.remove("animate"), 100);
     }, 150);
 
-    // 2. COUNTDOWN LOGIC
-    const weddingDate = new Date("Nov 14, 2026 15:00:00").getTime();
+    musicButton.addEventListener("click", () => {
+      if(!introFinished) return;
+      if(weddingSong.paused) {
+        weddingSong.play();
+        document.getElementById("audioIcon").innerText = "❚❚";
+        overlay.classList.add("hide");
+        musicButton.classList.remove("intro-audio-btn");
+      } else {
+        weddingSong.pause();
+        document.getElementById("audioIcon").innerText = "▶";
+      }
+    });
+
+    // 2. CONTADOR
+    const target = new Date("2026-11-14T15:00:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
-      const diff = weddingDate - now;
-      document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-      document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      const diff = target - now;
+      document.getElementById("heroDias").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("heroHoras").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById("heroMinutos").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("heroSegundos").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
 
-    // 3. FADE IN ANIMATION ON SCROLL
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    // 3. CARRUSEL
+    let pos = 0;
+    function moverMomentos(n) {
+      pos += n;
+      if(pos > 7) pos = 0; if(pos < 0) pos = 7;
+      document.getElementById("momentsTrack").style.transform = `translateX(-${pos * 100}%)`;
+    }
 
-    // 4. SHEET.BEST FORM LOGIC (CORREGIDO)
+    // 4. ANIMACIÓN SCROLL
+    const obs = new IntersectionObserver(ents => ents.forEach(e => e.isIntersecting && e.target.classList.add("visible")), {threshold: 0.1});
+    document.querySelectorAll(".fade-up").forEach(s => obs.observe(s));
+
+    // 5. FORMULARIO RSVP SHEET.BEST
     const scriptURL = "https://api.sheetbest.com/sheets/b4cf6ad2-4545-40d0-a1e7-bf5b1282b342";
-    const form = document.getElementById('rsvpForm');
-    const btn = document.getElementById('submitBtn');
-    const rsvpMsg = document.getElementById('rsvpMessage');
-
-    form.addEventListener('submit', async (e) => {
+    const form = document.getElementById("rsvpForm");
+    form.addEventListener("submit", async e => {
       e.preventDefault();
-      btn.disabled = true;
-      btn.innerText = "Enviando...";
-      rsvpMsg.innerText = "Registrando tu respuesta...";
-
-      const data = {
-        Fecha: new Date().toLocaleString(),
-        Nombre: form.nombre.value,
-        Asistencia: form.asistencia.value,
-        Numero_Invitados: form.numeroInvitados.value || 0,
-        Nombre_Hospedaje: form.asistencia.value,
-        Requiere_Transporte: form.asistencia.value,
-        Observaciones: form.observaciones.value
-      };
+      const btn = document.getElementById("submitBtn");
+      const msg = document.getElementById("rsvpMessage");
+      btn.disabled = true; btn.innerText = "Enviando...";
+      
+      const data = Object.fromEntries(new FormData(form));
+      data.fechaRegistro = new Date().toLocaleString();
 
       try {
-        const response = await fetch(scriptURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify([data])
-        });
-
-        if(response.ok) {
-          rsvpMsg.innerText = "¡Gracias! Confirmación recibida.";
-          btn.innerText = "¡Listo!";
-          form.reset();
-        } else {
-          throw new Error();
-        }
-      } catch (error) {
-        rsvpMsg.innerText = "Hubo un error. Intenta de nuevo.";
-        btn.disabled = false;
-        btn.innerText = "Enviar Confirmación";
+        await fetch(scriptURL, { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify([data]) });
+        msg.innerText = "¡Gracias! Tu confirmación fue registrada.";
+        form.reset();
+        btn.innerText = "¡Enviado!";
+      } catch (err) {
+        msg.innerText = "Error al enviar. Intenta de nuevo.";
+        btn.disabled = false; btn.innerText = "Enviar Confirmación";
       }
     });
   </script>
