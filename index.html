@@ -19,7 +19,7 @@
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
 
-    /* --- INTRO (RESTAURADA ORIGINAL) --- */
+    /* --- INTRO --- */
     #intro-overlay{ position:fixed; inset:0; background:radial-gradient(circle at center, rgba(40,30,24,0.92), rgba(20,16,14,0.98)); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 1.2s ease; }
     #intro-overlay.hide{ opacity:0; visibility:hidden; pointer-events:none; }
     .intro-content{ position:relative; text-align:center; color:#fff; width:100%; max-width:900px; }
@@ -34,19 +34,14 @@
     #celebration-burst.show span { animation: burstAni 1s ease-out forwards; }
     @keyframes burstAni { 0%{opacity:1;transform:translate(0,0)} 100%{opacity:0;transform:translate(var(--tx), var(--ty))} }
 
-    /* --- BOTÓN AUDIO (AJUSTADO PARA QUE NO SE BORRE) --- */
+    /* --- BOTÓN AUDIO (UBICACIÓN INDEPENDIENTE) --- */
     .audio-btn { background: var(--gold); color: white; display: flex; align-items: center; justify-content: center; z-index: 100000; cursor: pointer; border: 2px solid white; transition: all 0.6s ease; box-shadow: var(--shadow); }
-    
-    /* Esta clase lo posiciona al inicio (dentro de la intro visualmente) */
     .intro-audio-btn { position: fixed; left: 50%; bottom: 80px; transform: translateX(-50%); width: 80px; height: 80px; font-size: 28px; border-radius: 50%; animation: pulse 2s infinite; }
-    
-    /* Esta clase lo mueve a la esquina al dar play */
     .fixed-audio-btn { position: fixed !important; bottom: 25px !important; right: 25px !important; left: auto !important; transform: none !important; width: 55px !important; height: 55px !important; font-size: 18px !important; border-radius: 50% !important; opacity: 0.8 !important; }
-    
     @keyframes pulse { 0% {box-shadow: 0 0 0 0 rgba(182, 148, 114, 0.7);} 70% {box-shadow: 0 0 0 15px rgba(182, 148, 114, 0);} 100% {box-shadow: 0 0 0 0 rgba(182, 148, 114, 0);} }
     .hidden { display: none !important; }
 
-    /* --- HERO (RESTAURADO ORIGINAL) --- */
+    /* --- HERO --- */
     .hero{ position:relative; min-height:100vh; background: linear-gradient(rgba(34, 28, 24, 0.38), rgba(34, 28, 24, 0.38)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80'); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; text-align:center; padding:30px 20px; }
     .hero-box{ width:100%; max-width:900px; padding:60px 30px; border-radius:28px; background:rgba(255, 248, 241, 0.14); border:1px solid rgba(255,255,255,0.24); backdrop-filter:blur(4px); color:#fff; }
     .hero h1{ font-size:76px; font-weight:500; margin-bottom:10px; }
@@ -68,38 +63,35 @@
     .eyebrow{ color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-size:12px; margin-bottom:12px; display:inline-block; }
     h2{ font-size:28px; margin-bottom:18px; color:#4a3b31; line-height: 1.1; font-weight: 500; } 
 
-    /* TIMELINE INFO (El cambio que te gustó) */
+    /* FILAS DE INFORMACIÓN CELEBRACIÓN */
     .timeline-info { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 450px; margin: 30px auto 0; }
     .info-row { background: #fffaf5; border: 1px solid var(--line); border-radius: 50px; padding: 10px 20px; width: 100%; text-align: center; font-size: 16px; box-shadow: 2px 2px 10px rgba(0,0,0,0.02); }
     .info-row strong { color: var(--gold-dark); margin-right: 5px; }
 
-    /* GRIDS ORIGINALES */
+    /* GRIDS */
     .timeline, .how-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; text-align: left; }
     .stay-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; text-align: left; }
     .timeline-card, .how-card, .stay-card { background:#fffaf5; border:1px solid var(--line); border-radius:20px; padding:24px; }
     .stay-media img { width:100%; height:220px; object-fit:cover; border-radius:12px; margin-bottom: 15px; }
 
-    /* LLUVIA DE SOBRES */
-    .gift-qr-wrap { display: flex; justify-content: center; margin-top: 25px; }
-    .gift-qr { width: 220px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background: #fff; padding: 10px; }
-
     /* CARRUSEL */
     .moments-carousel{ position: relative; max-width: 100%; margin: 30px auto 0; overflow:hidden; border-radius: 24px; background: #000; }
-    .moments-track{ display: flex; transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1); align-items: center; }
-    .moments-slide{ min-width: 100%; max-height: 600px; object-fit: contain; }
+    .moments-track{ display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); align-items: center; cursor: grab; }
+    .moments-slide{ min-width: 100%; max-height: 600px; object-fit: contain; pointer-events: none; }
     .moments-btn{ position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; border-radius: 50%; border:none; background: rgba(255,255,255,0.7); cursor:pointer; z-index: 5; font-size: 20px; }
     .moments-btn.prev{ left: 15px; } .moments-btn.next{ right: 15px; }
 
     /* RSVP */
     .rsvp-box { max-width: 600px; margin: 0 auto; text-align: center; }
-    .btn-toggle-rsvp { background: rgba(182, 148, 114, 0.15); color: var(--gold-dark); border: 1px solid var(--gold); padding: 16px 40px; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; }
+    .btn-toggle-rsvp { background: rgba(182, 148, 114, 0.15); color: var(--gold-dark); border: 1px solid var(--gold); padding: 16px 40px; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; }
     #form-container { max-height: 0; overflow: hidden; transition: max-height 0.8s ease-in-out; text-align: left; }
     #form-container.show { max-height: 1200px; margin-top: 30px; }
-    .rsvp-form label { display: block; font-size: 13px; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 5px 5px; font-weight: bold; }
-    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid var(--line); font-family: inherit; font-size: 16px; outline: none; background: #fff; }
     .btn-submit { background: var(--gold); color: white; border: none; padding: 18px; border-radius: 50px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 25px; }
 
-    /* CIERRE */
+    /* FADE UP */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
     .footer-names { font-size: 24px; line-height: 1.1; color: var(--gold-dark); margin-top: 10px; font-style: italic; text-align: center; }
     .copyright { margin-top: 25px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
 
@@ -137,10 +129,7 @@
         <div class="hero-count-item"><span id="heroSegundos">00</span><small>Seg</small></div>
       </div>
     </div>
-    <div class="scroll-guide">
-      <span>▲</span>
-      <p>Desliza hacia arriba</p>
-    </div>
+    <div class="scroll-guide"><span>▲</span><p>Desliza hacia arriba</p></div>
   </section>
 
   <section class="section fade-up" id="celebracion">
@@ -163,6 +152,7 @@
       <div class="timeline">
         <div class="timeline-card"><h3>Sábado</h3><p>Ceremonia y celebración al atardecer.</p></div>
         <div class="timeline-card"><h3>Domingo</h3><p>Día de playa y música entre amigos.</p></div>
+        <div class="timeline-card"><h3>Lunes</h3><p>Regreso y despedida.</p></div>
       </div>
     </div>
   </section>
@@ -176,13 +166,13 @@
           <div class="stay-media"><img src="Delventto.jpg" alt="Delventto"></div>
           <h3>Delventto</h3>
           <p>Apartamentos muy cerca del evento.</p>
-          <a href="https://es-l.airbnb.com/rooms/1555358437242662400" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none; background:var(--gold); color:white; padding:15px; border-radius:50px;">Airbnb</a>
+          <a href="https://es-l.airbnb.com/rooms/1555358437242662400" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none;">Airbnb</a>
         </div>
         <div class="stay-card">
           <div class="stay-media"><img src="Samaria.jpg" alt="Samaria"></div>
           <h3>Samaria</h3>
           <p>Comodidad frente al mar.</p>
-          <a href="https://www.booking.com/Share-eUOU7w" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none; background:var(--gold); color:white; padding:15px; border-radius:50px;">Booking</a>
+          <a href="https://www.booking.com/Share-eUOU7w" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none;">Booking</a>
         </div>
       </div>
     </div>
@@ -258,6 +248,7 @@
   <audio id="weddingSong" loop><source src="Frente-al-mar.mp3" type="audio/mpeg"></audio>
 
   <script>
+    // LÓGICA RSVP
     const btnToggle = document.getElementById("btnToggleForm");
     const container = document.getElementById("form-container");
     const icon = document.getElementById("toggleIcon");
@@ -268,6 +259,7 @@
       });
     }
 
+    // LÓGICA INTRO Y AUDIO
     const overlay = document.getElementById("intro-overlay");
     const countNumber = document.getElementById("count-number");
     const musicBtn = document.getElementById("musicButton");
@@ -298,6 +290,56 @@
       }
     });
 
+    // LÓGICA CARRUSEL CON SOPORTE TÁCTIL (SWIPE)
+    let pos = 0;
+    const track = document.getElementById("momentsTrack");
+    const totalSlides = 8;
+
+    function updateCarousel() {
+      if(track) track.style.transform = `translateX(-${pos * 100}%)`;
+    }
+
+    function moverManual(n) {
+      pos = (pos + n + totalSlides) % totalSlides;
+      updateCarousel();
+      resetAuto();
+    }
+
+    let autoSlide = setInterval(() => {
+      pos = (pos + 1) % totalSlides;
+      updateCarousel();
+    }, 5000);
+
+    function resetAuto() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(() => {
+        pos = (pos + 1) % totalSlides;
+        updateCarousel();
+      }, 5000);
+    }
+
+    // Eventos Touch para celulares
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if(track) {
+      track.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, {passive: true});
+
+      track.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleGesture();
+      }, {passive: true});
+    }
+
+    function handleGesture() {
+      const swipeThreshold = 50;
+      if (touchStartX - touchEndX > swipeThreshold) { moverManual(1); } // Swipe Izquierda
+      if (touchEndX - touchStartX > swipeThreshold) { moverManual(-1); } // Swipe Derecha
+    }
+
+    // COUNTDOWN
     const weddingDate = new Date("2026-11-14T15:00:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -310,12 +352,7 @@
       }
     }, 1000);
 
-    let pos = 0;
-    const track = document.getElementById("momentsTrack");
-    function moverManual(n) { pos = (pos + n + 8) % 8; if(track) track.style.transform = `translateX(-${pos * 100}%)`; resetAuto(); }
-    let autoSlide = setInterval(() => { pos = (pos + 1) % 8; if(track) track.style.transform = `translateX(-${pos * 100}%)`; }, 5000);
-    function resetAuto() { clearInterval(autoSlide); autoSlide = setInterval(() => { pos = (pos + 1) % 8; if(track) track.style.transform = `translateX(-${pos * 100}%)`; }, 5000); }
-
+    // OBSERVER FADE UP
     const observer = new IntersectionObserver(ents => ents.forEach(e => e.isIntersecting && e.target.classList.add("visible")), { threshold: 0.1 });
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
   </script>
