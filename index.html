@@ -81,14 +81,20 @@
     .moments-btn{ position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; border-radius: 50%; border:none; background: rgba(255,255,255,0.7); cursor:pointer; z-index: 5; font-size: 20px; }
     .moments-btn.prev{ left: 15px; } .moments-btn.next{ right: 15px; }
 
-    /* --- NUEVOS ESTILOS RSVP ELEGANTE --- */
+    /* --- RSVP ELEGANTE Y CENTRADO --- */
     #rsvp .card { 
       max-width: 500px; 
       margin: 0 auto; 
       padding: 35px 25px; 
       transition: all 0.5s ease;
     }
-    .rsvp-box { width: 100%; text-align: center; }
+    .rsvp-box { 
+      width: 100%; 
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centrado horizontal del botón */
+      justify-content: center;
+    }
     .btn-toggle-rsvp { 
       background: var(--gold); 
       color: white; 
@@ -103,8 +109,9 @@
       align-items: center; 
       gap: 12px; 
       box-shadow: 0 4px 15px rgba(182, 148, 114, 0.3);
+      width: auto; /* Para que el botón no ocupe todo el ancho si no es necesario */
     }
-    #form-container { max-height: 0; overflow: hidden; transition: max-height 0.8s ease-in-out; text-align: left; }
+    #form-container { width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.8s ease-in-out; text-align: left; }
     #form-container.show { max-height: 1200px; margin-top: 30px; }
 
     .rsvp-form { display: flex; flex-direction: column; gap: 20px; padding-top: 10px; }
@@ -150,6 +157,7 @@
       margin-top: 15px; 
       letter-spacing: 1px;
     }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
     /* FADE ANIMATION */
     .fade-up { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
@@ -313,7 +321,7 @@
             <button type="submit" id="submitBtn" class="btn-submit">Enviar Confirmación</button>
           </form>
         </div>
-        <p id="rsvpMessage" style="text-align:center; margin-top:15px; font-weight:bold; color:var(--gold-dark);"></p>
+        <p id="rsvpMessage" style="text-align:center; margin-top:15px; font-weight:bold; color:var(--gold-dark); min-height: 24px;"></p>
       </div>
     </div>
   </section>
@@ -330,14 +338,68 @@
   <audio id="weddingSong" loop><source src="Frente-al-mar.mp3" type="audio/mpeg"></audio>
 
   <script>
-    // --- LÓGICA RSVP ---
+    // --- LÓGICA RSVP (ACTUALIZADA) ---
     const btnToggle = document.getElementById("btnToggleForm");
     const container = document.getElementById("form-container");
     const icon = document.getElementById("toggleIcon");
+    const rsvpForm = document.getElementById("rsvpForm");
+    const rsvpMessage = document.getElementById("rsvpMessage");
+    const submitBtn = document.getElementById("submitBtn");
+
     if(btnToggle) {
       btnToggle.addEventListener("click", () => {
         const isShowing = container.classList.toggle("show");
         icon.innerText = isShowing ? "−" : "+";
+        if(isShowing) rsvpMessage.innerText = ""; // Limpia mensaje al abrir
+      });
+    }
+
+    if(rsvpForm) {
+      rsvpForm.addEventListener("submit", async (e) => {
+        e.preventDefault(); // EVITA EL RECARGUE DE PÁGINA
+        
+        submitBtn.innerText = "Enviando...";
+        submitBtn.disabled = true;
+        
+        const data = {
+          Fecha: new Date().toLocaleString(),
+          Nombre: rsvpForm.Nombre.value,
+          Asistencia: rsvpForm.Asistencia.value,
+          NumeroInvitados: rsvpForm.NumeroInvitados.value,
+          Nombre_Hospedaje: rsvpForm.Nombre_Hospedaje.value,
+          Viajas_en_Carro: rsvpForm.Viajas_en_Carro.value,
+          Observaciones: rsvpForm.Observaciones.value
+        };
+
+        const scriptURL = "https://api.sheetbest.com/sheets/b4cf6ad2-4545-40d0-a1e7-bf5b1282b342";
+
+        try {
+          await fetch(scriptURL, { 
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify([data]) 
+          });
+          
+          // ÉXITO
+          rsvpMessage.style.color = "var(--gold-dark)";
+          rsvpMessage.innerText = "¡Confirmación exitosa!";
+          rsvpForm.reset();
+          
+          // Cierre automático tras 2 segundos
+          setTimeout(() => {
+            container.classList.remove("show");
+            icon.innerText = "+";
+            submitBtn.innerText = "Enviar Confirmación";
+            submitBtn.disabled = false;
+          }, 2000);
+
+        } catch (err) {
+          // ERROR
+          rsvpMessage.style.color = "red";
+          rsvpMessage.innerText = "Error al enviar. Intenta de nuevo.";
+          submitBtn.innerText = "Enviar Confirmación";
+          submitBtn.disabled = false;
+        }
       });
     }
 
@@ -376,7 +438,6 @@
     let pos = 0;
     const track = document.getElementById("momentsTrack");
     const totalSlides = 8;
-
     function updateCarousel() { if(track) track.style.transform = `translateX(-${pos * 100}%)`; }
     function moverManual(n) { pos = (pos + n + totalSlides) % totalSlides; updateCarousel(); resetAuto(); }
     let autoSlide = setInterval(() => { pos = (pos + 1) % totalSlides; updateCarousel(); }, 5000);
