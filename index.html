@@ -152,17 +152,21 @@
     .footer-names { font-size: 24px; color: var(--gold-dark); margin-top: 10px; font-style: italic; text-align: center; }
     .copyright { margin-top: 25px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 15px; opacity: 0.7; text-transform: none; letter-spacing: 1px; text-align: center; font-family: "Arial", sans-serif; text-transform: capitalize;}
 
-    @media (max-width: 900px) {
-  /* ... otros estilos que ya tengas ... */
+    /* --- AJUSTES PARA CELULARES --- */
+    @media (max-width: 900px){ .hero h1 { font-size: 36px !important; white-space: nowrap !important; letter-spacing: -1px;}
+      .two-column-grid, .stay-grid { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column !important; gap: 20px;
+      }
 
-  .hero h1 { 
-    font-size: 38px; /* Bajamos un poco de 45px a 38px para que quepa mejor */
-    white-space: nowrap; /* ESTA ES LA CLAVE: Prohíbe el salto de línea */
-    letter-spacing: -1px; /* Cierra un poco las letras para ganar espacio */
-  } 
+      /* Aseguramos que las tarjetas internas no se reduzcan */
+      .grid-card, .stay-card {
+        width: 100% !important;
+      }
 
-  /* ... otros estilos ... */
-}
+      /* Ajustes menores de espaciado para que no se vea pegado */
+      .hero-box { padding: 40px 15px; }
+      .moments-slide { max-height: 350px; }
+      .card { padding: 30px 20px; }
+    }
   </style>
 </head>
 <body>
