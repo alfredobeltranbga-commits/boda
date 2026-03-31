@@ -51,7 +51,6 @@
       border-radius: 50%;
     }
 
-    /* Posición inicial del botón de música en la intro */
     .intro-audio-btn { 
       position: fixed; 
       left: 50%; 
@@ -63,7 +62,6 @@
       animation: pulse 2s infinite; 
     }
 
-    /* Posición fija a la derecha una vez activado */
     .fixed-audio-btn { 
       position: fixed !important; 
       bottom: 25px !important; 
@@ -73,10 +71,9 @@
       opacity: 0.8 !important; 
     }
 
-    /* Estilo botón WhatsApp encima de la música */
     .whatsapp-float { 
       position: fixed; 
-      bottom: 90px; /* Ubicado encima del botón de audio */
+      bottom: 90px; 
       right: 25px; 
       opacity: 0; 
       visibility: hidden; 
@@ -123,11 +120,17 @@
 
     .two-column-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; text-align: center; }
     .grid-card { background:#fffaf5; border:1px solid var(--line); border-radius:20px; padding:24px; }
+    .grid-card h3 { margin-bottom: 15px; color: var(--gold-dark); }
     .grid-card img { width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-    /* PREGUNTAS FRECUENTES (FAQ) */
+    .stay-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; text-align: left; }
+    .stay-card { background:#fffaf5; border:1px solid var(--line); border-radius:20px; padding:24px; }
+    .stay-media img { width:100%; height:220px; object-fit:cover; border-radius:12px; margin-bottom: 15px; }
+
+    /* FAQ */
     .faq-container { text-align: left; max-width: 800px; margin: 30px auto 0; }
     .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
+    .faq-item:last-child { border-bottom: none; }
     .faq-item h3 { font-size: 18px; color: var(--gold-dark); margin-bottom: 10px; font-weight: 600; }
     .faq-item p { font-size: 15px; color: var(--text); opacity: 0.9; }
 
@@ -144,7 +147,7 @@
     #form-container { width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.8s ease-in-out; text-align: left; }
     #form-container.show { max-height: 1200px; margin-top: 30px; }
     .rsvp-form { display: flex; flex-direction: column; gap: 20px; }
-    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 10px 5px; border: none; border-bottom: 1px solid var(--line); background: transparent; font-family: inherit; font-size: 16px; outline: none; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 10px 5px; border: none; border-bottom: 1px solid var(--line); background: transparent; font-family: inherit; font-size: 16px; outline: none; color: var(--text); }
     .btn-submit { background: var(--text); color: white; border: none; padding: 18px; border-radius: 50px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
 
     .fade-up { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
@@ -154,8 +157,9 @@
     .copyright { margin-top: 25px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
 
     @media (max-width: 900px){ 
-      .two-column-grid { grid-template-columns: 1fr; } 
+      .two-column-grid, .stay-grid { grid-template-columns: 1fr; } 
       .hero h1 { font-size: 45px; } 
+      .moments-slide { max-height: 400px; }
     }
   </style>
 </head>
@@ -205,7 +209,7 @@
       <div class="timeline-info">
         <div class="info-row"><strong>Fecha:</strong> 14 de noviembre 2026</div>
         <div class="info-row"><strong>Hora:</strong> 3:00 pm</div>
-        <div class="info-row"><strong>Lugar:</strong> <a href="https://maps.google.com" target="_blank" style="text-decoration:underline;">📍 Casa Gloria</a></div>
+        <div class="info-row"><strong>Lugar:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" style="text-decoration:underline;">📍 Casa Gloria</a></div>
       </div>
     </div>
   </section>
@@ -218,12 +222,52 @@
         <div class="grid-card">
           <h3>Sábado - El Gran Día</h3>
           <img src="sabado.jpg" alt="Boda Alfred y Joha">
-          <p>Nos vemos a las 3:30 pm para nuestra ceremonia frente al mar.</p>
+          <p>Nos vemos a las 3:30 pm para nuestra ceremonia frente al mar. Seguiremos con el brindis, fotos al atardecer y rumba hasta que el cuerpo aguante.</p>
         </div>
         <div class="grid-card">
           <h3>Domingo - Día de Playa</h3>
           <img src="domingo.jpg" alt="Playa Santa Marta">
-          <p>Almuerzo y celebración frente al mar.</p>
+          <p>Queremos pasar el día con ustedes en la playa, con música, cervezas y almuerzo frente al mar. ¡A seguir celebrando!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-up" id="dress-code">
+    <div class="card beige">
+      <span class="eyebrow">Código de Vestuario</span>
+      <h2>Blanco & Beige – Playa Elegante</h2>
+      <div class="two-column-grid">
+        <div class="grid-card">
+          <h3>Hombres</h3>
+          <img src="vestuario_hombres.jpg" alt="Dress Code Hombres">
+          <p>Bermuda beige y camisa blanca o guayabera.</p>
+        </div>
+        <div class="grid-card">
+          <h3>Mujeres</h3>
+          <img src="vestuario_mujeres.jpg" alt="Dress Code Mujeres">
+          <p>Vestidos blancos o conjuntos en tonos claros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-up" id="alojarse">
+    <div class="card">
+      <span class="eyebrow">Hospedaje</span>
+      <h2>Donde alojarse</h2>
+      <div class="stay-grid">
+        <div class="stay-card">
+          <div class="stay-media"><img src="Delventto.jpg" alt="Delventto"></div>
+          <h3>Delventto</h3>
+          <p>Ubicado a 5 min de la boda. Es nuestra recomendación principal por cercanía y comodidad.</p>
+          <a href="https://es-l.airbnb.com/rooms/1555358437242662400" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none; background:var(--gold); color:white; padding:12px; border-radius:50px;">Ver en Airbnb</a>
+        </div>
+        <div class="stay-card">
+          <div class="stay-media"><img src="Samaria.jpg" alt="Samaria"></div>
+          <h3>Samaria</h3>
+          <p>Excelente alternativa frente al mar, a pocos minutos en carro del evento.</p>
+          <a href="https://www.booking.com/Share-eUOU7w" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none; background:var(--gold); color:white; padding:12px; border-radius:50px;">Ver en Booking</a>
         </div>
       </div>
     </div>
@@ -233,8 +277,29 @@
     <div class="card beige">
       <span class="eyebrow">Detalle</span>
       <h2>Lluvia de sobres</h2>
-      <p>Si deseas tener un detalle para nuestra nueva etapa:</p>
+      <p>Tu presencia es nuestro mejor regalo. Si deseas tener un detalle para nuestra nueva etapa:</p>
       <img src="qr-boda.png" alt="QR Regalo" style="max-width: 150px; margin: 20px auto;">
+    </div>
+  </section>
+
+  <section class="section fade-up" id="momentos">
+    <div class="card">
+      <span class="eyebrow">Historia</span>
+      <h2>Nuestros Momentos</h2>
+      <div class="moments-carousel" id="momentsCarousel">
+        <button class="moments-btn prev" onclick="moverManual(-1)">❮</button>
+        <div class="moments-track" id="momentsTrack">
+          <img src="foto1.jpg" class="moments-slide">
+          <img src="foto2.jpg" class="moments-slide">
+          <img src="foto3.jpg" class="moments-slide">
+          <img src="foto4.jpg" class="moments-slide">
+          <img src="foto5.jpg" class="moments-slide">
+          <img src="foto6.jpg" class="moments-slide">
+          <img src="foto7.jpg" class="moments-slide">
+          <img src="foto8.jpg" class="moments-slide">
+        </div>
+        <button class="moments-btn next" onclick="moverManual(1)">❯</button>
+      </div>
     </div>
   </section>
 
@@ -250,6 +315,8 @@
               <option value="No">No podré asistir</option>
             </select>
             <input type="number" name="NumeroInvitados" placeholder="Nro. Invitados" min="1" max="6" value="1">
+            <input type="text" name="Nombre_Hospedaje" placeholder="¿Dónde te quedarás?">
+            <textarea name="Observaciones" rows="3" placeholder="Mensaje u observaciones..."></textarea>
             <button type="submit" id="submitBtn" class="btn-submit">Enviar Confirmación</button>
           </form>
         </div>
@@ -265,15 +332,15 @@
       <div class="faq-container">
         <div class="faq-item">
           <h3>¿Se pueden llevar niños?</h3>
-          <p>Nuestra boda será un evento exclusivo para adultos.</p>
+          <p>Amamos a sus hijos, pero para que todos podamos disfrutar al máximo, nuestra boda será un evento exclusivo para adultos.</p>
         </div>
         <div class="faq-item">
           <h3>¿Hay parqueadero en el lugar?</h3>
-          <p>Sí, Casa Gloria cuenta con parqueadero privado.</p>
+          <p>Sí, Casa Gloria cuenta con parqueadero privado y vigilado para la comodidad de nuestros invitados.</p>
         </div>
         <div class="faq-item">
           <h3>¿Cómo llegar si no tengo carro?</h3>
-          <p>Recomendamos aplicaciones de transporte desde Santa Marta.</p>
+          <p>Recomendamos el uso de aplicaciones de transporte o taxis locales desde Santa Marta o Pozos Colorados. Es un trayecto corto de unos pocos minutos.</p>
         </div>
       </div>
     </div>
@@ -300,12 +367,8 @@
       if(song.paused) {
         song.play();
         overlay.classList.add("hide");
-        
-        // Mover botón de música a la derecha y cambiar estilo
         musicBtn.className = "audio-btn fixed-audio-btn";
         audioIcon.innerText = "❚❚";
-
-        // MOSTRAR BOTÓN DE WHATSAPP SOBRE EL DE MÚSICA
         whatsappBtn.classList.add("visible");
       } else {
         song.pause();
@@ -317,10 +380,38 @@
     const btnToggle = document.getElementById("btnToggleForm");
     const container = document.getElementById("form-container");
     const rsvpForm = document.getElementById("rsvpForm");
+    const rsvpMessage = document.getElementById("rsvpMessage");
+    const submitBtn = document.getElementById("submitBtn");
 
     btnToggle.addEventListener("click", () => {
       const isShowing = container.classList.toggle("show");
       document.getElementById("toggleIcon").innerText = isShowing ? "−" : "+";
+    });
+
+    rsvpForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.innerText = "Enviando...";
+      submitBtn.disabled = true;
+      const data = {
+        Fecha: new Date().toLocaleString(),
+        Nombre: rsvpForm.Nombre.value,
+        Asistencia: rsvpForm.Asistencia.value,
+        NumeroInvitados: rsvpForm.NumeroInvitados.value,
+        Nombre_Hospedaje: rsvpForm.Nombre_Hospedaje.value,
+        Observaciones: rsvpForm.Observaciones.value
+      };
+      try {
+        await fetch("https://api.sheetbest.com/sheets/b4cf6ad2-4545-40d0-a1e7-bf5b1282b342", { 
+          method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify([data]) 
+        });
+        rsvpMessage.innerText = "¡Confirmación enviada con éxito!";
+        rsvpForm.reset();
+        setTimeout(() => container.classList.remove("show"), 2000);
+      } catch (err) {
+        rsvpMessage.innerText = "Error al enviar. Intenta de nuevo.";
+      }
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Enviar Confirmación";
     });
 
     // --- INTRO COUNTDOWN ---
@@ -336,6 +427,13 @@
       }
       num++;
     }, 150);
+
+    // --- CARRUSEL ---
+    let pos = 0;
+    const track = document.getElementById("momentsTrack");
+    function updateCarousel() { track.style.transform = `translateX(-${pos * 100}%)`; }
+    function moverManual(n) { pos = (pos + n + 8) % 8; updateCarousel(); }
+    setInterval(() => { pos = (pos + 1) % 8; updateCarousel(); }, 5000);
 
     // --- COUNTDOWN BODA ---
     const weddingDate = new Date("2026-11-14T15:00:00").getTime();
