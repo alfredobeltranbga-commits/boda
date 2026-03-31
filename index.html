@@ -27,6 +27,10 @@
     #intro-message{ margin-top:28px; font-size:24px; color:rgba(255,255,255,0.94); opacity:0; transform:translateY(12px); transition: 0.8s ease; }
     #intro-message.show{ opacity:1; transform:translateY(0); }
 
+    /* ESTILO PARA EL NOMBRE DEL INVITADO */
+    #guest-greeting { font-size: 20px; color: var(--gold); margin-bottom: 5px; opacity: 0; transition: 1s; }
+    #guest-name { font-size: 32px; font-weight: bold; margin-bottom: 25px; min-height: 40px; color: #fff; }
+
     /* BURST EFFECT */
     #celebration-burst{ position:absolute; left:50%; top:50%; width:0; height:0; opacity:0; transform:translate(-50%, -50%); }
     #celebration-burst.show{opacity:1}
@@ -51,42 +55,19 @@
       border-radius: 50%;
     }
 
-    .intro-audio-btn { 
-      position: fixed; 
-      left: 50%; 
-      bottom: 80px; 
-      transform: translateX(-50%); 
-      width: 80px; 
-      height: 80px; 
-      font-size: 28px; 
-      animation: pulse 2s infinite; 
-    }
+    .intro-audio-btn { position: fixed; left: 50%; bottom: 80px; transform: translateX(-50%); width: 80px; height: 80px; font-size: 28px; animation: pulse 2s infinite; }
+    .fixed-audio-btn { position: fixed !important; bottom: 25px !important; right: 25px !important; left: auto !important; transform: none !important; opacity: 0.8 !important; }
 
-    .fixed-audio-btn { 
-      position: fixed !important; 
-      bottom: 25px !important; 
-      right: 25px !important; 
-      left: auto !important; 
-      transform: none !important; 
-      opacity: 0.8 !important; 
-    }
-
-    /* Estilo WhatsApp: mismo color que música, oculto al inicio */
     .whatsapp-float { 
       position: fixed; 
-      bottom: 90px; /* Justo encima del botón de música */
+      bottom: 90px; 
       right: 25px; 
       opacity: 0; 
       visibility: hidden; 
       pointer-events: none; 
       transform: translateY(20px);
     }
-    .whatsapp-float.visible { 
-      opacity: 0.8; 
-      visibility: visible; 
-      pointer-events: auto; 
-      transform: translateY(0);
-    }
+    .whatsapp-float.visible { opacity: 0.8; visibility: visible; pointer-events: auto; transform: translateY(0); }
     .whatsapp-float:hover { opacity: 1 !important; transform: scale(1.1); }
 
     @keyframes pulse { 0% {box-shadow: 0 0 0 0 rgba(182, 148, 114, 0.7);} 70% {box-shadow: 0 0 0 15px rgba(182, 148, 114, 0);} 100% {box-shadow: 0 0 0 0 rgba(182, 148, 114, 0);} }
@@ -150,19 +131,22 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     .footer-names { font-size: 24px; color: var(--gold-dark); margin-top: 10px; font-style: italic; text-align: center; }
-    .copyright { margin-top: 25px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 15px; opacity: 0.7; text-transform: none; letter-spacing: 1px; text-align: center; font-family: "Arial", sans-serif; text-transform: capitalize;}
+    .copyright { margin-top: 25px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 15px; opacity: 0.7; text-transform: none; letter-spacing: 1px; text-align: center; font-family: "Arial", sans-serif; }
 
     /* --- AJUSTES PARA CELULARES --- */
-    @media (max-width: 900px){ .hero h1 { font-size: 36px !important; white-space: nowrap !important; letter-spacing: -1px;}
-      .two-column-grid, .stay-grid { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column !important; gap: 20px;
+    @media (max-width: 900px){ 
+      .hero h1 { 
+        font-size: 36px !important; 
+        white-space: nowrap !important; 
+        letter-spacing: -1px;
       }
-
-      /* Aseguramos que las tarjetas internas no se reduzcan */
-      .grid-card, .stay-card {
-        width: 100% !important;
+      .two-column-grid, .stay-grid { 
+        grid-template-columns: 1fr !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px;
       }
-
-      /* Ajustes menores de espaciado para que no se vea pegado */
+      .grid-card, .stay-card { width: 100% !important; }
       .hero-box { padding: 40px 15px; }
       .moments-slide { max-height: 350px; }
       .card { padding: 30px 20px; }
@@ -179,6 +163,9 @@
 
   <div id="intro-overlay">
     <div class="intro-content">
+      <div id="guest-greeting">¡Hola!</div>
+      <div id="guest-name"></div>
+
       <div id="count-number">1</div>
       <div id="celebration-burst">
         <span class="spark" style="--tx:0px; --ty:-120px;"></span><span class="spark" style="--tx:85px; --ty:-85px;"></span>
@@ -215,7 +202,7 @@
       <div class="timeline-info">
         <div class="info-row"><strong>Fecha:</strong> 14 de noviembre 2026</div>
         <div class="info-row"><strong>Hora:</strong> 3:00 pm</div>
-        <div class="info-row"><strong>Lugar:</strong> <a href="https://maps.app.goo.gl/Q48QCXSDX8o6V3Bz5" target="_blank" style="text-decoration:underline;">📍 Casa Gloria</a></div>
+        <div class="info-row"><strong>Lugar:</strong> <a href="https://maps.app.goo.gl/9R6vS7nE8mH2nU5Y9" target="_blank" style="text-decoration:underline;">📍 Casa Gloria</a></div>
       </div>
     </div>
   </section>
@@ -228,7 +215,7 @@
         <div class="grid-card">
           <h3>Sábado - El Gran Día</h3>
           <img src="sabado.jpg" alt="Boda Alfred y Joha">
-          <p>Nos vemos a las 3:00 pm para nuestra ceremonia frente al mar. Seguiremos con el brindis, fotos al atardecer y rumba hasta que el cuerpo aguante.</p>
+          <p>Nos vemos a las 3:30 pm para nuestra ceremonia frente al mar. Seguiremos con el brindis, fotos al atardecer y rumba hasta que el cuerpo aguante.</p>
         </div>
         <div class="grid-card">
           <h3>Domingo - Día de Playa</h3>
@@ -242,8 +229,7 @@
   <section class="section fade-up" id="dress-code">
     <div class="card beige">
       <span class="eyebrow">Código de Vestuario</span>
-      <h2>Blanco & Beige</h2>
-      <p>Será una celebración en la playa, sencilla y muy familiar, así que la idea es que todos estén frescos, cómodos y en tonos blancos o claros.</p>
+      <h2>Blanco & Beige – Playa Elegante</h2>
       <div class="two-column-grid">
         <div class="grid-card">
           <h3>Hombres</h3>
@@ -267,13 +253,13 @@
         <div class="stay-card">
           <div class="stay-media"><img src="Delventto.jpg" alt="Delventto"></div>
           <h3>Delventto</h3>
-          <p>El edificio Delventto es el lugar más cercano a la casa del matrimonio (aprox. 5 minutos en carro y muy cerca de la playa). Por comodidad y logística, es el hospedaje que recomendamos principalmente para los invitados. En Airbnb pueden encontrar varios apartamentos disponibles en este edificio</p>
+          <p>Ubicado a 5 min de la boda. Es nuestra recomendación principal por cercanía y comodidad.</p>
           <a href="https://es-l.airbnb.com/rooms/1555358437242662400" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none; background:var(--gold); color:white; padding:12px; border-radius:50px;">Ver en Airbnb</a>
         </div>
         <div class="stay-card">
           <div class="stay-media"><img src="Samaria.jpg" alt="Samaria"></div>
           <h3>Samaria</h3>
-          <p>El conjunto Samaria también es una muy buena opción para hospedarse. Está ubicado frente al mar y a pocos minutos en carro de la casa del matrimonio. Es un poco más retirado que Delventto, pero sigue siendo una excelente alternativa de hospedaje.</p>
+          <p>Excelente alternativa frente al mar, a pocos minutos en carro del evento.</p>
           <a href="https://www.booking.com/Share-eUOU7w" target="_blank" class="btn-submit" style="display:block; text-align:center; text-decoration:none; background:var(--gold); color:white; padding:12px; border-radius:50px;">Ver en Booking</a>
         </div>
       </div>
@@ -353,13 +339,27 @@
     <div class="card">
       <p style="font-style: italic; font-size: 18px;">Gracias por ser parte de nuestra historia.</p>
       <p class="footer-names">Con Amor <br> Alfred & Joha</p>
-      <div class="copyright">© 2026 Boda Alfred & Joha | Santa Marta, Colombia</div>
+      <div class="copyright">© 2026 boda alfred & joha | santa marta, colombia</div>
     </div>
   </footer>
 
   <audio id="weddingSong" loop><source src="Frente-al-mar.mp3" type="audio/mpeg"></audio>
 
   <script>
+    // --- LÓGICA DE PERSONALIZACIÓN ---
+    window.addEventListener('load', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let invitado = urlParams.get('para'); 
+
+      if (invitado) {
+        invitado = invitado.replace(/_/g, ' ');
+        document.getElementById("guest-greeting").style.opacity = "1";
+        document.getElementById("guest-name").innerText = invitado;
+      } else {
+        document.getElementById("guest-greeting").style.display = "none";
+      }
+    });
+
     // --- LÓGICA BOTONES (Música + WhatsApp) ---
     const musicBtn = document.getElementById("musicButton");
     const whatsappBtn = document.getElementById("whatsappBtn");
@@ -371,12 +371,8 @@
       if(song.paused) {
         song.play();
         overlay.classList.add("hide");
-        
-        // Mover botón de música a la derecha y cambiar estilo
         musicBtn.className = "audio-btn fixed-audio-btn";
         audioIcon.innerText = "❚❚";
-
-        // MOSTRAR BOTÓN DE WHATSAPP SOBRE EL DE MÚSICA
         whatsappBtn.classList.add("visible");
       } else {
         song.pause();
@@ -422,10 +418,9 @@
       submitBtn.innerText = "Enviar Confirmación";
     });
 
-    // --- AUDIO E INTRO ---
+    // --- INTRO COUNTDOWN ---
     const countNumber = document.getElementById("count-number");
     let num = 1;
-
     const introInterval = setInterval(() => {
       countNumber.innerText = num;
       if (num === 15) {
@@ -444,7 +439,7 @@
     function moverManual(n) { pos = (pos + n + 8) % 8; updateCarousel(); }
     setInterval(() => { pos = (pos + 1) % 8; updateCarousel(); }, 5000);
 
-    // --- COUNTDOWN ---
+    // --- COUNTDOWN BODA ---
     const weddingDate = new Date("2026-11-14T15:00:00").getTime();
     setInterval(() => {
       const diff = weddingDate - new Date().getTime();
