@@ -353,6 +353,7 @@
 
       if (invitado) {
         invitado = invitado.replace(/_/g, ' ');
+        document.getElementById("guest-greeting").innerText = "Especialmente para:";
         document.getElementById("guest-greeting").style.opacity = "1";
         document.getElementById("guest-name").innerText = invitado;
       } else {
