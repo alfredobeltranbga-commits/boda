@@ -485,8 +485,8 @@
     let pos = 0;
     const track = document.getElementById("momentsTrack");
     function updateCarousel() { track.style.transform = `translateX(-${pos * 100}%)`; }
-    function moverManual(n) { pos = (pos + n + 8) % 8; updateCarousel(); }
-    setInterval(() => { pos = (pos + 1) % 8; updateCarousel(); }, 5000);
+    function moverManual(n) { pos = (pos + n + 13) % 13; updateCarousel(); }
+    setInterval(() => { pos = (pos + 1) % 13; updateCarousel(); }, 5000);
 
     // --- COUNTDOWN BODA ---
     const weddingDate = new Date("2026-11-14T15:00:00").getTime();
